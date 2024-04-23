@@ -1,44 +1,34 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # OurPool
- > Your author list below should include links to all members GitHub (remove existing author).
  
- > Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https://github.com/jnalbert) [Rishabh Pillai](https://github.com/hackinrish) [Sarbesh Sankar](https://github.com/sarbesh1234)
+Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https://github.com/jnalbert) [Rishabh Pillai](https://github.com/hackinrish) [Sarbesh Sankar](https://github.com/sarbesh1234)
 
- > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list and start thinking about the features you will implement. If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). The project work should be divided almost equally among team members. You can of course help each other, but it needs to be clear who will be responsible for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings.
-
- > ## Expectations
- > * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
- > * **Each member of the group must actively participate in the Github Project board, writing unit tests, and reviewing commited code.**
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include:
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- > * What will be the input/output of your project?
- > * What are the features that the project provides?
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted.
+1. Why is it important or interesting to you?
 
+This project is important to us because two of our members travel often to the bay and face struggles when coordinating rides to airports and events. Uber and Lyft rides are often very expensive especially around school breaks such as spring break and winter break. To lower the cost of these rides many students will attempt to pool together in the same car however, it is hard to find a group of people. Right now, this process is all done through chat apps which can be cumbersome and ineffective. The website attempts to solve this problem for many of us and our fellow students.
 
- > This project is important to us because two of our members travel often to the bay and face struggles when coordinating rides to airports and events. Uber and Lyft rides are often very expensive especially around school breaks such as spring break and winter break. To lower the cost of these rides many students will attempt to pool together in the same car however, it is hard to find a group of people. Right now, this process is all done through chat apps which can be cumbersome and ineffective. The website attempts to solve this problem for many of us and our fellow students.
- > We plan to make this project a front-end heavy project, using the NextJS framework, which includes HTML, CSS, and JSX. We want to use the Firestore database for our database. We will use Google authentication through Firestore for authentication. We will host our website on GitHub pages. For our testing, we will use the Jest Javascript testing library.
- > The expected input in this project is several fields of data. One of the main data inputs is the date and time of the ride as well as the meeting place for the ride. In addition, the chosen airport for the destination and the number of people traveling to the airport are imputed. We will need a user’s verified user email, name, year, and social media handle for user accounts. The outputs for this project will be all of the postings of rides available and the information about them. All of this data will be taken in and displayed on our web application.
- > Features:
- > * Login Page with UCR email authentication built-in
->  * Account set up a page where users will enter their account information and where their UCR email will be verified.
->  * Ability to create a pool posting that will have the following information attached
->    * Destination, pick up location, pick up time, number of spots, post creator, and current users in the pool, what type of transportation (car, uber, etc), if Uber estimated cost per individual.
->  * Users can join pools and leave pools via the front-end
->  * Users can see their past rides
->  * Users can comment on postings to request changes such as a change of location or time
->  * When creating a new pool posting that is similar in time and drop-off location
->  * Users can change their account data in the settings page
+2. What languages/tools/technologies do you plan to use?
 
- > You also need to set up an empty project board using GitHub projects (board view with default columns). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added. All columns should be in the right order.
+We plan to make this project a front-end heavy project, using the NextJS framework, which includes HTML, CSS, and JSX. We want to use the Firestore database for our database. We will use Google authentication through Firestore for authentication. We will host our website on GitHub pages. For our testing, we will use the Jest Javascript testing library.
+
+3. What will be the input/output of your project?
+
+The expected input in this project is several fields of data. One of the main data inputs is the date and time of the ride as well as the meeting place for the ride. In addition, the chosen airport for the destination and the number of people traveling to the airport are imputed. We will need a user’s verified user email, name, year, and social media handle for user accounts. The outputs for this project will be all of the postings of rides available and the information about them. All of this data will be taken in and displayed on our web application.
+
+4. What are the features that the project provides?
+
+Our features include:
+* Login Page with UCR email authentication built-in
+* Account set up a page where users will enter their account information and where their UCR email will be verified.
+* Ability to create a pool posting that will have the following information attached
+  * Destination, pick up location, pick up time, number of spots, post creator, and current users in the pool, what type of transportation (car, uber, etc), if Uber estimated cost per individual.
+* Users can join pools and leave pools via the front-end
+* Users can see their past rides
+* Users can comment on postings to request changes such as a change of location or time
+* When creating a new pool posting that is similar in time and drop-off location
+* Users can change their account data in the settings page
+
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
