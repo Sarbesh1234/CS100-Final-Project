@@ -21,7 +21,9 @@
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  > * What will be the input/output of your project?
  > * What are the features that the project provides?
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted.
+
+
  > This project is important to us because two of our members travel often to the bay and face struggles when coordinating rides to airports and events. Uber and Lyft rides are often very expensive especially around school breaks such as spring break and winter break. To lower the cost of these rides many students will attempt to pool together in the same car however, it is hard to find a group of people. Right now, this process is all done through chat apps which can be cumbersome and ineffective. The website attempts to solve this problem for many of us and our fellow students.
  > We plan to make this project a front-end heavy project, using the NextJS framework, which includes HTML, CSS, and JSX. We want to use the Firestore database for our database. We will use Google authentication through Firestore for authentication. We will host our website on GitHub pages. For our testing, we will use the Jest Javascript testing library.
  > The expected input in this project is several fields of data. One of the main data inputs is the date and time of the ride as well as the meeting place for the ride. In addition, the chosen airport for the destination and the number of people traveling to the airport are imputed. We will need a user’s verified user email, name, year, and social media handle for user accounts. The outputs for this project will be all of the postings of rides available and the information about them. All of this data will be taken in and displayed on our web application.
