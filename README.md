@@ -1,4 +1,4 @@
-# OurPool
+# R'Chess
  
 Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https://github.com/jnalbert) [Rishabh Pillai](https://github.com/hackinrish) [Sarbesh Sankar](https://github.com/sarbesh1234)
 
@@ -6,28 +6,25 @@ Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https:/
 ## Project Description
 1. Why is it important or interesting to you?
 
-This project is important to us because two of our members travel often to the bay and face struggles when coordinating rides to airports and events. Uber and Lyft rides are often very expensive especially around school breaks such as spring break and winter break. To lower the cost of these rides many students will attempt to pool together in the same car however, it is hard to find a group of people. Right now, this process is all done through chat apps which can be cumbersome and ineffective. The website attempts to solve this problem for many of us and our fellow students.
+This project is important to us because we all love playing chess. We often play on sites like chess.com together and against other people in the world. However, while playing, we never think about the inner workings of the game. We know the rules of chess, but as computer science majors, we don’t know exactly how they are implemented, how the games are saved, and how moves are exactly executed. With this project, we’re excited to combine our love for chess with the computer science principles we have been learning.
 
 2. What languages/tools/technologies do you plan to use?
 
-We plan to make this project a front-end heavy project, using the NextJS framework, which includes HTML, CSS, and JSX. We want to use the Firestore database for our database. We will use Google authentication through Firestore for authentication. We will host our website on GitHub pages. For our testing, we will use the Jest Javascript testing library.
+We plan to use C++ as our programming language. Our app will be entirely terminal so we will use C++ to code the “user interface” as well as the backend logic. We will also be using Google’s GTest as well as Valgrind and GDB for our debugging.
 
 3. What will be the input/output of your project?
 
-The expected input in this project is several fields of data. One of the main data inputs is the date and time of the ride as well as the meeting place for the ride. In addition, the chosen airport for the destination and the number of people traveling to the airport are imputed. We will need a user’s verified user email, name, year, and social media handle for user accounts. The outputs for this project will be all of the postings of rides available and the information about them. All of this data will be taken in and displayed on our web application.
+Our project input and output will involve movements of chess pieces. So, for example, the user will specify the location of a piece they want to move and then the destination they want to move it to. For previously saved games, we will allow users to name the game and save it for later to be played again.
 
 4. What are the features that the project provides?
 
-Our features include:
-* Login Page with UCR email authentication built-in
-* Account set up a page where users will enter their account information and where their UCR email will be verified.
-* Ability to create a pool posting that will have the following information attached
-  * Destination, pick up location, pick up time, number of spots, post creator, and current users in the pool, what type of transportation (car, uber, etc), if Uber estimated cost per individual.
-* Users can join pools and leave pools via the front-end
-* Users can see their past rides
-* Users can comment on postings to request changes such as a change of location or time
-* When creating a new pool posting that is similar in time and drop-off location
-* Users can change their account data in the settings page
+Our application will involve a functional two-player chess game that adheres to all of the rules of chess.
+* Players will be able to select squares on the chess board through the terminal that acts as the to and from locations.
+  * These moves will be validated against basic chess rules based on whichever piece they choose.
+* Users will be able to play against another person on the same device with the game switching off “plays” between each player
+* Users will be able to save a game with a certain player for later and give it a name
+* Users will be able to come back at a later date and access this game and restart it right where they left off
+
 
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
