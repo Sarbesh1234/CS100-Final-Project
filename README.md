@@ -29,23 +29,14 @@ Our application will involve a functional two-player chess game that adheres to 
 ## Phase II
 
 ## User Interface Specification
- > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from the User Interface Design Document Template of CMSC 345 at the University of Maryland Global Campus)
 
 ### Navigation Diagram
-> Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
-
  <img width="4682" alt="rchess" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/438fc5cd-5fe6-42a3-baa1-8b9b648e6d7c">
 
-
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
-
 ![CS100-Screen-Layout-Final-Project](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/0188ad2a-ed3f-469f-a28d-e20cdec6d3b3)
 
-
 ## Class Diagram
- > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
-
  ![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/a196bcbf-e972-4483-8f70-7344f008eee1)
 
  > ## Phase III
