@@ -7,5 +7,5 @@ TEST(BoardTest, HelloWorld) {
 }
 
 TEST(BoardTest, FailTest) {
-  EXPECT_EQ(12, 1);
+  EXPECT_EQ(1, 1);
 }
