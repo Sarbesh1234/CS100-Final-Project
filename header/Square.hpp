@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Piece.hpp"
+#include <utility>
 
 class Square {
     private:
