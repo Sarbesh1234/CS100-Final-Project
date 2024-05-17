@@ -3,6 +3,7 @@ enum Color {WHITE, BLACK};
 #pragma once
 #include <vector>
 #include <list>
+#include <string>
 
 class Piece {
     protected:
