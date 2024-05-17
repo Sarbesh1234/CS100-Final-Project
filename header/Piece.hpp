@@ -4,6 +4,7 @@ enum Color {WHITE, BLACK};
 #include <vector>
 #include <list>
 #include <string>
+#include <algorithm>
 
 class Piece {
     protected:
