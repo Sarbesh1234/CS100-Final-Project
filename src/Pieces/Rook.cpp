@@ -1,11 +1,11 @@
 #include "../../header/Pieces/Rook.hpp"
 
-Rook::Rook(Color color) {
-    this->symbol = 'R';
+Rook::Rook(PieceColor color) {
+    this->symbol = "R";
     this->color = color;
 }
 
-void Rook::constructPossibleMoves(std::pair<int, int> currentPosition) {
+void Rook::constructPossibleMoves(pair<int, int> currentPosition) {
     this->possibleMoves.clear();
 
     int row = currentPosition.first;

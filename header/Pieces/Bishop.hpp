@@ -4,6 +4,6 @@
 
 class Bishop : public Piece {
     public:
-        Bishop(Color);  //constructor
-        void constructPossibleMoves(std::pair<int, int>);  //constructs possible moves for the bishop
+        Bishop(PieceColor);  //constructor
+        void constructPossibleMoves(pair<int, int>);  //constructs possible moves for the bishop
 };

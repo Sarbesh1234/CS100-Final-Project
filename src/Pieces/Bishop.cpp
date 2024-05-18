@@ -1,11 +1,11 @@
 #include "../../header/Pieces/Bishop.hpp"
 
-Bishop::Bishop(Color color) {
+Bishop::Bishop(PieceColor color) {
     this->color = color;
-    this->symbol = 'B';
+    this->symbol = "B";
 }
 
-void Bishop::constructPossibleMoves(std::pair<int, int> currentPosition) {
+void Bishop::constructPossibleMoves(pair<int, int> currentPosition) {
     this->possibleMoves.clear();
 
     int row = currentPosition.first;

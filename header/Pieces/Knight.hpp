@@ -4,6 +4,6 @@
 
 class Knight: public Piece {
     public:
-        Knight(Color);
-        virtual void constructPossibleMoves(std::pair<int, int> currPosition) override;
+        Knight(PieceColor);
+        virtual void constructPossibleMoves(pair<int, int> currPosition) override;
 };

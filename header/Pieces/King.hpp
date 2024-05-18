@@ -3,6 +3,6 @@
 
 class King : public Piece {
     public:
-        virtual void constructPossibleMoves(std::pair<int, int>) override;
-        King(Color);
+        virtual void constructPossibleMoves(pair<int, int>) override;
+        King(PieceColor);
 };

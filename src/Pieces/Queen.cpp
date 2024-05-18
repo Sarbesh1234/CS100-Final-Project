@@ -1,62 +1,35 @@
 #include "../../header/Pieces/Queen.hpp"
 
-Queen::Queen(Color color) {
+Queen::Queen(PieceColor color) {
     this->color = color;
-    this->symbol = 'Q';
+    this->symbol = "Q";
 }
 
-void Queen::constructPossibleMoves(std::pair<int, int> currentPosition) {
+void Queen::constructPossibleMoves(pair<int, int> currentPosition) {
     this->possibleMoves.clear();
+
+    std::list<pair<int, int> > mutations;
+
+    mutations.push_back(std::make_pair(0, 1)); // right
+    mutations.push_back(std::make_pair(1, 1)); // right down
+    mutations.push_back(std::make_pair(1, 0)); // down
+    mutations.push_back(std::make_pair(1, -1)); // left down
+    mutations.push_back(std::make_pair(0, -1)); // left
+    mutations.push_back(std::make_pair(-1, -1)); // left up
+    mutations.push_back(std::make_pair(-1, 0)); // up
+    mutations.push_back(std::make_pair(-1, 1)); // right up
 
     int row = currentPosition.first;
     int col = currentPosition.second;
 
-    while(row < 7) {
-        row++;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    row = currentPosition.first;
-    while(row > 0) {
-        row--;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    while(col < 7) {
-        col++;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    col = currentPosition.second;
-    while(col > 0) {
-        col--;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
+    for (auto mutation : mutations) {
+        int newRow = row + mutation.first;
+        int newCol = col + mutation.second;
 
-    row = currentPosition.first;
-    col = currentPosition.second;
-
-    while(row < 7 && col < 7) {
-        row++;
-        col++;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    row = currentPosition.first;
-    col = currentPosition.second;
-    while(row > 0 && col > 0) {
-        row--;
-        col--;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    row = currentPosition.first;
-    col = currentPosition.second;
-    while(row < 7 && col > 0) {
-        row++;
-        col--;
-        this->possibleMoves.push_back(std::make_pair(row, col));
-    }
-    row = currentPosition.first;
-    col = currentPosition.second;
-    while(row > 0 && col < 7) {
-        row--;
-        col++;
-        this->possibleMoves.push_back(std::make_pair(row, col));
+        while (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+            this->possibleMoves.push_back(std::make_pair(newRow, newCol));
+            newRow += mutation.first;
+            newCol += mutation.second;
+        }
     }
 }

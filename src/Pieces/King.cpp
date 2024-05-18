@@ -1,15 +1,15 @@
 #include "../../header/Pieces/King.hpp"
 
 
-King::King(Color color) {
-    this->symbol = 'K';
-    color = WHITE;
+King::King(PieceColor color) {
+    this->color = color;
+    this->symbol = "K";
 }
-
-void King::constructPossibleMoves(std::pair<int, int> currentPosition) {
+    
+void King::constructPossibleMoves(pair<int, int> currentPosition) {
     this->possibleMoves.clear();
 
-    std::list<std::pair<int, int> > mutations;
+    std::list<pair<int, int> > mutations;
 
     mutations.push_back(std::make_pair(0, 1)); // right
     mutations.push_back(std::make_pair(1, 1)); // right down

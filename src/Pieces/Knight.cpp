@@ -1,14 +1,14 @@
 #include "../../header/Pieces/Knight.hpp"
 
-Knight::Knight(Color color) {
-    this->symbol = 'k';
+Knight::Knight(PieceColor color) {
+    this->symbol = "N";
     this->color = color;
 }
 
-void Knight::constructPossibleMoves(std::pair<int, int> currentPosition) {
+void Knight::constructPossibleMoves(pair<int, int> currentPosition) {
     this->possibleMoves.clear();
 
-    std::list<std::pair<int, int> > mutations;
+    std::list<pair<int, int> > mutations;
 
     mutations.push_back(std::make_pair(2, 1));  // right down
     mutations.push_back(std::make_pair(2, -1)); // right up

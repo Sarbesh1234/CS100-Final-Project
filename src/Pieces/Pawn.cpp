@@ -1,17 +1,17 @@
 #include "../../header/Pieces/Pawn.hpp"
 
-Pawn::Pawn(Color color) : hasMoved(false) {
+Pawn::Pawn(PieceColor color) : hasMoved(false) {
     this->color = color;
-    this->symbol = 'P';
+    this->symbol = "P";
 }
 
-void Pawn::constructPossibleMoves(std::pair<int, int> currentPosition) {
+void Pawn::constructPossibleMoves(pair<int, int> currentPosition) {
     // check to see if the pawn has moved. If it has, it can only move one square forward
     // if it hasn't, it can move two squares forward
 
     this->possibleMoves.clear();
 
-    std::list<std::pair<int, int> > mutations;
+    std::list<pair<int, int> > mutations;
 
     mutations.push_back(std::make_pair(-1, 0)); // up
     mutations.push_back(std::make_pair(-1, -1)); // up left

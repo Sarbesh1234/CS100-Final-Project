@@ -4,7 +4,7 @@
 
 class Rook : public Piece {
     public:
-        Rook(Color);
-        virtual void constructPossibleMoves(std::pair<int, int>) override;
+        Rook(PieceColor);
+        virtual void constructPossibleMoves(pair<int, int>) override;
 
 };
