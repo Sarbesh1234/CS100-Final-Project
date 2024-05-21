@@ -5,8 +5,12 @@ using namespace std;
 void Game::startGame() {
   string userInput;
   output << "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
-  while (input >> userInput) {
-    if (userInput == "start") {
+  while (getline(input, userInput)) {
+    if (userInput.empty()) {
+      output << "Please enter a choice." << endl;
+      startGame();
+    }
+    else if (userInput == "start") {
       startNewGame();
       break;
     } else if (userInput == "continue") {
@@ -14,6 +18,7 @@ void Game::startGame() {
       break;
     } else {
       output << "This is not valid input, please try again." << endl;
+      startGame();
     }
   }
 }
@@ -39,13 +44,15 @@ void Game::startNewGame() {
     if (gameInput == "quit") {
       break;
       endGame();
-    } else if (gameInput != "QUIT") {
+    } else if (gameInput != "quit") {
       askUserForMove();
     }
   }
 }
 
 void Game::loadSavedGame() {
+  output << "What game would you like to load?" << endl;
+  return;
 }
 
 void Game::endGame() {
