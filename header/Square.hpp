@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Piece.hpp"
+#include <utility>
+
+using std::pair;
 
 using std::pair;
 
