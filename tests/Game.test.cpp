@@ -1,59 +1,121 @@
-#include "gtest/gtest.h"
-#include "../header/Game.hpp"
+#include <gtest/gtest.h>
+#include "Game.hpp" 
 
-class GameTest : public ::testing::Test {
-protected:
-  std::stringstream testInput;
-  std::stringstream testOutput;
-};
+// Test startGame() function
+TEST(GameTest, StartGame) {
+    // Simulate user input
+    std::istringstream input("START\n");
 
-TEST_F(GameTest, StartGameAsksForInput) {
-  Game game(testInput, testOutput);
-  testInput << "START\n";
-  game.startGame();
-  std::string input = testInput.str();
-  EXPECT_TRUE(input.find("START") != std::string::npos);
-  EXPECT_TRUE(input.find("CONTINUE") != std::string::npos);
+    // Simulate output
+    std::ostringstream output;
+
+    // Set input and output streams for the game
+    Game game(input, output);
+
+    // Call the function to be tested
+    game.startGame();
+
+    // Check if the output is as expected
+    std::string expectedOutput = "Please enter your game name: ";
+    expectedOutput += "Please enter Player 1's name: ";
+    expectedOutput += "Please enter Player 2's name:" ;
+
+    ASSERT_EQ(output.str(), expectedOutput);
 }
 
-TEST_F(GameTest, StartGameValidStartInput) {
-  Game game(testInput, testOutput);
-  testInput << "START\nNewGameName\nPlayer1\nPlayer2\n";
-  game.startGame();
-  std::string output = testOutput.str();
-  EXPECT_TRUE(output.find("game name") != std::string::npos);
-  EXPECT_TRUE(output.find("Player 1's name") != std::string::npos);
-  EXPECT_TRUE(output.find("Player 2's name") != std::string::npos);
+// Test startNewGame() function
+TEST(GameTest, StartNewGame) {
+    // Simulate user input
+    std::istringstream input("QUIT\n");
+
+    // Simulate output
+    std::ostringstream output;
+
+    // Set input and output streams for the game
+    Game game(input, output);
+
+    // Call the function to be tested
+    game.startNewGame();
+
+    // Check if the output is as expected
+    std::string expectedOutput = "Please enter your game name: ";
+    expectedOutput += "Please enter Player 1's name: ";
+    expectedOutput += "Please enter Player 2's name:" ;
+
+    ASSERT_EQ(output.str(), expectedOutput);
 }
 
-TEST_F(GameTest, StartGameValidContinueInput) {
-  Game game(testInput, testOutput);
-  testInput << "CONTINUE\n";
-  game.startGame();
+// Test startGame() function with invalid input
+TEST(GameTest, StartGame_InvalidInput) {
+    // Simulate user input
+    std::istringstream input("INVALID\nSTART\n");
+
+    // Simulate output
+    std::ostringstream output;
+
+    // Set input and output streams for the game
+    Game game(input, output);
+
+    // Call the function to be tested
+    game.startGame();
+
+    // Check if the output prompts the user to enter valid input
+    std::string expectedOutput = "This is not valid input, please try again.\n";
+    expectedOutput += "Please enter your game name: ";
+    expectedOutput += "Please enter Player 1's name: ";
+    expectedOutput += "Please enter Player 2's name:" ;
+
+    ASSERT_EQ(output.str(), expectedOutput);
 }
 
-TEST_F(GameTest, StartGameInvalidInput) {
-  Game game(testInput, testOutput);
-  testInput << "INVALID\nSTART\n";
-  game.startGame();
-  std::string output = testOutput.str();
-  EXPECT_TRUE(output.find("This is not valid input") != std::string::npos);
-  EXPECT_TRUE(output.find("game name") != std::string::npos); // Valid input after invalid is processed
+// Test startGame() function with empty input
+TEST(GameTest, StartGame_EmptyInput) {
+    // Simulate user input
+    std::istringstream input("");
+
+    // Simulate output
+    std::ostringstream output;
+
+    // Set input and output streams for the game
+    Game game(input, output);
+
+    // Call the function to be tested
+    game.startGame();
+
+    // Check if the output prompts the user to enter valid input
+    std::string expectedOutput = "Please enter your game name: ";
+    expectedOutput += "Please enter Player 1's name: ";
+    expectedOutput += "Please enter Player 2's name:" ;
+
+    ASSERT_EQ(output.str(), expectedOutput);
 }
 
-TEST_F(GameTest, StartNewGameAsksForGameName) {
-  Game game(testInput, testOutput);
-  testInput << "START\n";
-  game.startGame();
-  std::string output = testOutput.str();
-  EXPECT_TRUE(output.find("game name") != std::string::npos);
+// Test startNewGame() function with quit input immediately
+TEST(GameTest, StartNewGame_QuitImmediately) {
+    // Simulate user input
+    std::istringstream input("QUIT\n");
+
+    // Simulate output
+    std::ostringstream output;
+
+    // Set input and output streams for the game
+    Game game(input, output);
+
+    // Call the function to be tested
+    game.startNewGame();
+
+    // Check if the output is as expected
+    std::string expectedOutput = "Please enter your game name: ";
+    expectedOutput += "Please enter Player 1's name: ";
+    expectedOutput += "Please enter Player 2's name:" ;
+
+    ASSERT_EQ(output.str(), expectedOutput);
 }
 
-TEST_F(GameTest, StartNewGameAsksForPlayerNames) {
-  Game game(testInput, testOutput);
-  testInput << "START\nNewGameName\n";
-  game.startGame();
-  std::string output = testOutput.str();
-  EXPECT_TRUE(output.find("Player 1's name") != std::string::npos);
-  EXPECT_TRUE(output.find("Player 2's name") != std::string::npos);
+
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
+

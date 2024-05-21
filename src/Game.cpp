@@ -6,10 +6,14 @@ void Game::startGame()
 {
     string userInput;
     bool invalidInput = true;
-    while (invalidInput)
-        output << "Do you want to start a game (ENTER START) or continue a previous one? (ENTER CONTINUE):";
+    while (invalidInput) {
+        output << "Do you want to start a game (ENTER START) or continue a previous one? (ENTER CONTINUE): ";
         input >> userInput;
-        if (userInput == "START") {   
+        if (userInput == "") {   
+            break;
+        }
+
+        else if (userInput == "START") {   
             startNewGame();
             invalidInput = false;
         }
@@ -22,6 +26,7 @@ void Game::startGame()
         else {
             output << "This is not valid input, please try again." << endl;
         }
+    }
 }
 
 void Game::startNewGame()
@@ -29,19 +34,19 @@ void Game::startNewGame()
     string player1name;
     string player2name;
     string gameInput;
-    output << "Please enter your game name:";
+    output << "Please enter your game name: ";
     input >> gameName;
-    output << "Please enter Player 1's name:";
+    output << "Please enter Player 1's name: ";
     input >> player1name;
     player1 = Player(player1name, "White");
-    output << "Please enter Player 2's name:";
+    output << "Please enter Player 2's name: " ;
     input >> player2name;
     player2 = Player(player2name, "Black");
 
     while (gameInput != "QUIT")
     {
         input >> gameInput;
-        // transform(gameInput.begin(), gameInput.end(), gameInput.begin(), ::toupper);
+        //transform(gameInput.begin(), gameInput.end(), gameInput.begin(), ::toupper);
         if (gameInput != "QUIT")
         {
             askUserForMove();
