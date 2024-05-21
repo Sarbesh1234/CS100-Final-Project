@@ -16,14 +16,15 @@ class Game {
     string gameName;
     //Board board;
     Player* currentPlayer;
-    iostream& input;
-    iostream& output;
+    istream& input;
+    ostream& output;
 
     public: 
-        Game(iostream& input, iostream& output) 
+        Game(istream& input, ostream& output) 
         : input(input), output(output), player1(Player("White", "Player 1")), 
         player2(Player("Black", "Player 2")), currentPlayer(&player1)
         {};
+        
         void startGame();
         void startNewGame();
         void loadSavedGame();
