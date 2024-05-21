@@ -12,6 +12,7 @@ class Square {
         Piece* piece;
         pair<int, int> position;
     public:
+        Square();
         Square(Piece* piece, pair<int, int> position);
         Piece* getPiece();
         pair<int, int> getIndex();
