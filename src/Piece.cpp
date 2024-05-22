@@ -7,3 +7,7 @@ bool Piece::isValidMove(pair<int, int> move) const {
 std::string Piece::getSymbol() const {
     return color == WHITE ? symbol + "w" : symbol + "b";
 }
+
+bool Piece::isPieceFriendly(Piece* piece) const {
+    return piece->color == this->color;
+}
