@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Piece.hpp"
+#include <utility>
+
+using std::pair;
 
 using std::pair;
 
@@ -9,6 +12,7 @@ class Square {
         Piece* piece;
         pair<int, int> position;
     public:
+        Square();
         Square(Piece* piece, pair<int, int> position);
         Piece* getPiece();
         pair<int, int> getIndex();

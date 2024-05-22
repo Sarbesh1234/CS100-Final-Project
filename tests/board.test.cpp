@@ -1,7 +1,21 @@
-#include "gtest/gtest.h"
-
 #include "../header/Board.hpp"
 
-TEST(BoardTest, HelloWorld) {
-  EXPECT_EQ(1, 1);
+#include <string>
+
+#include "gtest/gtest.h"
+
+using std::string;
+
+TEST(BoardTests, DisplayBoardShouldReturnCorrectBoard) {
+  Board testingBoard;
+  string expectedBoard = "   =================================\n 8 | - | - | - | - | - | - | - | - |\n   =================================\n 7 | - | - | - | - | - | - | - | - |\n   =================================\n 6 | - | - | - | - | - | - | - | - |\n   =================================\n 5 | - | - | - | - | - | - | - | - |\n   =================================\n 4 | - | - | - | - | - | - | - | - |\n   =================================\n 3 | - | - | - | - | - | - | - | - |\n   =================================\n 2 | - | - | - | - | - | - | - | - |\n   =================================\n 1 | - | - | - | - | - | - | - | - |\n   =================================\n    A   B   C   D   E   F   G   H\n";
+
+  EXPECT_EQ(expectedBoard, testingBoard.displayBoard(false));
+}
+
+TEST(BoardTests, DisplayBoardFlippedShouldReturnCorrectBoard) {
+  Board testingBoard;
+  string expectedBoard = "   =================================\n 1 | - | - | - | - | - | - | - | - |\n   =================================\n 2 | - | - | - | - | - | - | - | - |\n   =================================\n 3 | - | - | - | - | - | - | - | - |\n   =================================\n 4 | - | - | - | - | - | - | - | - |\n   =================================\n 5 | - | - | - | - | - | - | - | - |\n   =================================\n 6 | - | - | - | - | - | - | - | - |\n   =================================\n 7 | - | - | - | - | - | - | - | - |\n   =================================\n 8 | - | - | - | - | - | - | - | - |\n   =================================\n    H   G   F   E   D   C   B   A\n";
+
+  EXPECT_EQ(expectedBoard, testingBoard.displayBoard(true));
 }
