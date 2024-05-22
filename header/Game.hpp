@@ -6,6 +6,7 @@
 #include <string>
 #include "Player.hpp"
 #include "Board.hpp"
+#include "Piece.hpp"
 
 using namespace std;
 
@@ -15,14 +16,14 @@ class Game {
     Player player2;
     string gameName;
     //Board board;
-    Player* currentPlayer;
+    Player& currentPlayer;
     istream& input;
     ostream& output;
 
     public: 
         Game(istream& input, ostream& output) 
-        : input(input), output(output), player1(Player("White", "Player 1")), 
-        player2(Player("Black", "Player 2")), currentPlayer(&player1)
+        : input(input), output(output), player1(Player(PieceColor::WHITE, "Player 1")), 
+        player2(Player(PieceColor::BLACK, "Player 2")), currentPlayer(player1)
         {};
         
         void startGame();

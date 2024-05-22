@@ -18,7 +18,7 @@ void Game::startGame() {
       break;
     } else {
       output << "This is not valid input, please try again." << endl;
-      startGame();
+      output << "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
     }
   }
 }
@@ -31,16 +31,13 @@ void Game::startNewGame() {
   input >> gameName;
   output << "Please enter Player 1's name: ";
   input >> player1name;
-  player1 = Player(player1name, "White");
+  player1 = Player(PieceColor::WHITE, player1name);
   output << "Please enter Player 2's name: ";
   input >> player2name;
-  player2 = Player(player2name, "Black");
+  player2 = Player(PieceColor::BLACK, player2name);
 
   output << "Enter \"quit\" to end the game." << endl;
-  while (gameInput != "quit") {
-    input >> gameInput;
-    // transform(gameInput.begin(), gameInput.end(), gameInput.begin(), ::toupper);
-
+  while (input >> gameInput) {
     if (gameInput == "quit") {
       break;
       endGame();
@@ -57,24 +54,32 @@ void Game::loadSavedGame() {
 
 void Game::endGame() {
   char choice;
-  cout << "Are you sure you want to end the game?" << endl;
-  cout << "Enter 'Y' to confirm, or 'N' to continue playing: ";
-  cin >> choice;
-  if (choice == 'Y' || choice == 'y') {
+  output << "Are you sure you want to end the game?" << endl;
+  output << "Enter 'Y' to confirm, or 'N' to continue playing: ";
+  while (input >> choice) {
+    if (choice == 'Y' || choice == 'y') {
     // Ask if the user wants to save the game before ending
-    char saveChoice;
-    cout << "Do you want to save the game before ending? (Y/N): ";
-    cin >> saveChoice;
-    if (saveChoice == 'Y' || saveChoice == 'y') {
-      saveGame();
+      char saveChoice;
+      output << "Do you want to save the game before ending? (Y/N): ";
+      input >> saveChoice;
+      if (saveChoice == 'Y' || saveChoice == 'y') {
+        saveGame();
+      }
+      output << "Game ended. Thank you for playing!" << endl;
+      break;
     }
-    cout << "Game ended. Thank you for playing!" << endl;
-  } else if (choice == 'N' || choice == 'n') {
-    askUserForMove();
-  } else {
-    cout << "Invalid choice. Please enter 'Y' or 'N'." << endl;
-    endGame();
-  }
+
+    else if (choice == 'N' || choice == 'n') {
+      askUserForMove();
+      break;
+    }
+
+    else {
+        output << "Invalid choice. Please enter 'Y' or 'N'." << endl;
+        output << "Are you sure you want to end the game?" << endl;
+        output << "Enter 'Y' to confirm, or 'N' to continue playing: ";
+    }
+  }  
 }
 
 void Game::saveGame() {

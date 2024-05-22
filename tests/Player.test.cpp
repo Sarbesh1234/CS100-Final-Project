@@ -2,17 +2,17 @@
 #include "Player.hpp" 
 
 TEST(PlayerTest, ConstructorSetsName) {
-  Player player("White", "Alice");
-  EXPECT_EQ(player.name, "Alice");
+  Player player(PieceColor::WHITE, "Alice");
+  EXPECT_EQ(player.getName(), "Alice");
 }
 
 TEST(PlayerTest, ConstructorSetsColor) {
-  Player player("Black", "Bob");
-  EXPECT_EQ(player.color, "Black");
+  Player player(PieceColor::BLACK, "Bob");
+  EXPECT_EQ(player.getColor(), BLACK);
 }
 
 TEST(PlayerTest, EmptyConstructorAllowed) {
   Player player;
-  EXPECT_TRUE(player.name.empty());
-  EXPECT_TRUE(player.color.empty());
+  EXPECT_TRUE(player.getName().empty());
+  EXPECT_TRUE(player.getName().empty());
 }
