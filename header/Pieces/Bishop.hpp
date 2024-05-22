@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Piece.hpp"
+#include "../Square.hpp"
 
 class Bishop : public Piece {
     public:

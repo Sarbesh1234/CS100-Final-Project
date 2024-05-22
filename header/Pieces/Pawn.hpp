@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Piece.hpp"
+#include "../Square.hpp"
 class Pawn : public Piece {
     private:
         bool hasMoved;  //flag to check if the pawn has moved
