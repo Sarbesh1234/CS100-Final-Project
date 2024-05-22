@@ -1,10 +1,13 @@
-enum PieceColor {WHITE, BLACK};
 
+
+enum PieceColor {WHITE, BLACK};
 #pragma once
 #include <vector>
 #include <list>
 #include <string>
 #include <algorithm>
+
+class Square;
 
 using std::pair;
 
@@ -15,7 +18,7 @@ class Piece {
         PieceColor color;    //color of the piece
     public:
         // constructPossibleMoves needs to be public!!!
-        virtual void constructPossibleMoves(pair<int, int>) = 0;  //abstract function to construct possible moves (unique to each piece)
+        virtual void constructPossibleMoves(pair<int, int>, Square* [8][8] = nullptr) = 0;  //abstract function to construct possible moves (unique to each piece)
         bool isValidMove(pair<int, int>) const;
         std::string getSymbol() const;  //returns the symbol of the piece
 };

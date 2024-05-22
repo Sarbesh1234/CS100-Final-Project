@@ -5,8 +5,6 @@
 
 using std::pair;
 
-using std::pair;
-
 class Square {
     private:
         Piece* piece;

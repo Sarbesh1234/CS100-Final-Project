@@ -6,7 +6,7 @@ King::King(PieceColor color) {
     this->symbol = "K";
 }
     
-void King::constructPossibleMoves(pair<int, int> currentPosition) {
+void King::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     this->possibleMoves.clear();
 
     std::list<pair<int, int> > mutations;

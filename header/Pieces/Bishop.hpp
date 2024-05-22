@@ -1,9 +1,10 @@
 #pragma once
 
 #include "../Piece.hpp"
+#include "../Square.hpp"
 
 class Bishop : public Piece {
     public:
         Bishop(PieceColor);  //constructor
-        void constructPossibleMoves(pair<int, int>);  //constructs possible moves for the bishop
+        virtual void constructPossibleMoves(pair<int, int>, Square* [8][8] = nullptr);  //constructs possible moves for the bishop
 };

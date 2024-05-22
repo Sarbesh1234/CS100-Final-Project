@@ -5,7 +5,7 @@ Queen::Queen(PieceColor color) {
     this->symbol = "Q";
 }
 
-void Queen::constructPossibleMoves(pair<int, int> currentPosition) {
+void Queen::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     this->possibleMoves.clear();
 
     std::list<pair<int, int> > mutations;

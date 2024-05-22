@@ -5,7 +5,23 @@ using std::endl;
 Board::Board() {
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
-      board[i][j] = Square(nullptr, std::make_pair(i, j));
+      board[i][j] = new Square(nullptr, std::make_pair(i, j));
+    }
+  }
+}
+
+Board::~Board() {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      delete board[i][j];
+    }
+  }
+}
+
+Board::Board(Square* newBoard[8][8]) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      board[i][j] = newBoard[i][j];
     }
   }
 }
@@ -33,10 +49,10 @@ string Board::displayBoard(bool flipped) {
     ss << "|";
     for (int j = startingIndex; flipped ? j > endingIndex : j < endingIndex; j += increment) {
       // if piece does not exist, print a dash, otherwise print the piece
-      if (board[i][j].getPiece() == nullptr) {
+      if (board[i][j]->getPiece() == nullptr) {
         ss << " - ";
       } else {
-        Piece* currentPiece = board[i][j].getPiece();
+        Piece* currentPiece = board[i][j]->getPiece();
         ss << " " << currentPiece->getSymbol() << " ";
       }
       ss << "|";

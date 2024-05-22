@@ -5,7 +5,7 @@ Bishop::Bishop(PieceColor color) {
     this->symbol = "B";
 }
 
-void Bishop::constructPossibleMoves(pair<int, int> currentPosition) {
+void Bishop::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     this->possibleMoves.clear();
 
     int row = currentPosition.first;

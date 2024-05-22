@@ -5,7 +5,7 @@ Knight::Knight(PieceColor color) {
     this->color = color;
 }
 
-void Knight::constructPossibleMoves(pair<int, int> currentPosition) {
+void Knight::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     this->possibleMoves.clear();
 
     std::list<pair<int, int> > mutations;

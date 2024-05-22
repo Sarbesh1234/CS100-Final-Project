@@ -5,7 +5,7 @@ Rook::Rook(PieceColor color) {
     this->color = color;
 }
 
-void Rook::constructPossibleMoves(pair<int, int> currentPosition) {
+void Rook::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     this->possibleMoves.clear();
 
     int row = currentPosition.first;
