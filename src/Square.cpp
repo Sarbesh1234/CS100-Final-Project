@@ -11,4 +11,6 @@ pair<int, int> Square::getIndex() { return position; }
 
 void Square::setPiece(Piece* piece) { this->piece = piece; }
 
-bool Square::hasPiece() const { return piece != nullptr; }
+bool Square::hasPiece() const {
+  return piece != nullptr;
+}
