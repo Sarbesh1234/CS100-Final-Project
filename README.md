@@ -31,15 +31,18 @@ Our application will involve a functional two-player chess game that adheres to 
 ## User Interface Specification
 
 ### Navigation Diagram
- <img width="4682" alt="rchess" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/438fc5cd-5fe6-42a3-baa1-8b9b648e6d7c">
+<img width="4682" alt="rchess" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/5c4d029e-aa41-4343-9b09-93593e05c210">
+
 
 ### Screen Layouts
-![CS100-Screen-Layout-Final-Project](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/0188ad2a-ed3f-469f-a28d-e20cdec6d3b3)
+![CS100-Screen-Layout-Final-Project](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/10384dbc-4606-4afe-924c-3ab1fa72319e)
+
 
 ## Class Diagram
- ![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/a196bcbf-e972-4483-8f70-7344f008eee1)
+![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/68723dd0-0f38-455e-ab98-bdde46bc329f)
 
- > ## Phase III
+
+## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
  
  > BEFORE the meeting you should do the following:
