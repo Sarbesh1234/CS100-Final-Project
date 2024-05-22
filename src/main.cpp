@@ -1,11 +1,15 @@
 #include <iostream>
+#include <istream>
 
-#include "../header/Board.hpp"
+#include "../header/Game.hpp"
 
+using std::cin;
 using std::cout;
 using std::endl;
+using std::stringstream;
 
 int main() {
-  cout << "Hello World!" << endl;
+  Game game(cin, cout);
+  game.startGame();
   return 0;
 }
