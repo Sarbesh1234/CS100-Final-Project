@@ -15,7 +15,7 @@ class Game {
     Player player1;
     Player player2;
     string gameName;
-    //Board board;
+    Board board;
     Player& currentPlayer;
     istream& input;
     ostream& output;
