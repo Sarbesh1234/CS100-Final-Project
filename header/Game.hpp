@@ -23,7 +23,7 @@ class Game {
     public: 
         Game(istream& input, ostream& output) 
         : input(input), output(output), player1(Player(PieceColor::WHITE, "Player 1")), 
-        player2(Player(PieceColor::BLACK, "Player 2")), gameName(""), currentPlayer(player1)
+        player2(Player(PieceColor::BLACK, "Player 2")), currentPlayer(player1)
         {};
         
         void startGame();

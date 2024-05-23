@@ -13,6 +13,6 @@ TEST(PlayerTest, ConstructorSetsColor) {
 
 TEST(PlayerTest, EmptyConstructorAllowed) {
   Player player;
-  EXPECT_TRUE(player.getName().empty());
-  EXPECT_TRUE(player.getName().empty());
+  EXPECT_EQ(player.getName(), "");
+  EXPECT_EQ(player.getColor(), PieceColor::WHITE);
 }
