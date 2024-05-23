@@ -11,6 +11,5 @@ class Board {
   public: 
     Board();
     ~Board();
-    Board(Square* newBoard[8][8]);
     string displayBoard(bool flipped);
 };
