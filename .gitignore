@@ -5,3 +5,5 @@ CMakeCache.txt
 *.a
 Makefile
 /bin
+/build
+/lib

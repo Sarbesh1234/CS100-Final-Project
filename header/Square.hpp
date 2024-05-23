@@ -1,16 +1,21 @@
 #pragma once
 
 #include "Piece.hpp"
+#include <utility>
+
+using std::pair;
+
+using std::pair;
 
 class Square {
     private:
         Piece* piece;
-        std::pair<int, int> position;
+        pair<int, int> position;
     public:
         Square();
-        Square(Piece* piece, std::pair<int, int> position);
+        Square(Piece* piece, pair<int, int> position);
         Piece* getPiece();
-        std::pair<int, int> getIndex();
+        pair<int, int> getIndex();
         void setPiece(Piece* piece);
-        void setIndex(std::pair<int, int> index);
+        void setIndex(pair<int, int> index);
 };
