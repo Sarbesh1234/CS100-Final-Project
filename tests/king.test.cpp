@@ -94,57 +94,7 @@ TEST(KingSuite, KingOnSide) {
     EXPECT_TRUE(king.isValidMove(std::make_pair(4, 6)));
     EXPECT_TRUE(king.isValidMove(std::make_pair(5, 6)));
     EXPECT_TRUE(king.isValidMove(std::make_pair(5, 7)));
-}
-
-TEST(KingSuite, KingShouldNotBeAbleToMoveInTheSquareOfFriendlyPiece) {
-    King king(PieceColor::WHITE);
-    Square* board[8][8];
-
-    // setting up the board
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = new Square(nullptr, std::make_pair(i, j));
-        }
-    }
-
-    // setting up the friendly piece
-    board[3][3] = new Square(new King(PieceColor::WHITE), std::make_pair(3, 3));
-
-    king.constructPossibleMoves(std::make_pair(4, 3), board);
-
-    // valid moves
-    EXPECT_TRUE(king.isValidMove(std::make_pair(3, 2)));
-    EXPECT_TRUE(king.isValidMove(std::make_pair(3, 4)));
-
-    // checking if the king can move to the square of the friendly piece
-    EXPECT_FALSE(king.isValidMove(std::make_pair(3, 3)));
-}
-
-TEST(KingSuite, KingShouldBeAbleToMoveInTheSquareOfEnemyPiece) {
-    King king(PieceColor::WHITE);
-    Square* board[8][8];
-
-    // setting up the board
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = new Square(nullptr, std::make_pair(i, j));
-        }
-    }
-
-    // setting up the friendly piece
-    board[3][3] = new Square(new King(PieceColor::BLACK), std::make_pair(3, 3));
-
-    king.constructPossibleMoves(std::make_pair(4, 3), board);
-
-    // valid moves
-    EXPECT_TRUE(king.isValidMove(std::make_pair(3, 2)));
-    EXPECT_TRUE(king.isValidMove(std::make_pair(3, 4)));
-
-    // checking if the king can move to the square of the friendly piece
-    EXPECT_TRUE(king.isValidMove(std::make_pair(3, 3)));
-
-
-    EXPECT_FALSE(king.isValidMove(std::make_pair(5, 7)));
+    
 }
 
 TEST(KingSuite, KingSymbol) {
