@@ -11,5 +11,5 @@ class Board {
   public: 
     Board();
     ~Board();
-    string displayBoard(bool flipped);
+    string displayBoard(bool flipped = false);
 };
