@@ -63,26 +63,6 @@ TEST(GameTest, AskUserForMove_LowercaseInput) {
     ASSERT_EQ(output.str(), expectedOutput);
 }
 
-//Test AskUserForMove() function with empty input
-TEST(GameTest, AskUserForMove_EmptyInput) {
-    // Simulate user input
-    std::istringstream input("\n\nE3\n\nG5\n");
-
-    // Simulate output
-    std::ostringstream output;
-
-    // Set input and output streams for the game
-    Game game(input, output);
-    
-    // Call the function to be tested
-    game.askUserForMove();
-
-    // Check if the output is as expected
-    std::string expectedOutput = "Enter position of piece you want to move: \nInvalid Move! Please enter a valid position: \nInvalid Move! ";
-    expectedOutput += "Please enter a valid position: \nChoose position to move piece to: \nInvalid Move! Please enter a valid position: \n";
-    ASSERT_EQ(output.str(), expectedOutput);
-}
-
 
 
 

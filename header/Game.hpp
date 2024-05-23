@@ -5,18 +5,14 @@ using namespace std;
 
 class Game {
     private:
-    Player player1;
-    Player player2;
-    string gameName;
-    //Board board;
     Player* currentPlayer;
     istream& input;
     ostream& output;
+    std::pair<int,int> getMoveCoordinateHelper(istream& input,ostream& output);    
 
     public: 
         Game(istream& input, ostream& output) 
-        : input(input), output(output), player1(Player("White", "Player 1")), 
-        player2(Player("Black", "Player 2")), currentPlayer(&player1)
+        : input(input), output(output)
         {};
         void startGame();
         void startNewGame();
