@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "Board.hpp"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ void Game::startNewGame() {
   while (input >> gameInput) {
     if (gameInput == "quit") {
       break;
-      endGame();
+      quitGame();
     } else if (gameInput != "quit") {
       askUserForMove();
     }
@@ -52,7 +53,20 @@ void Game::loadSavedGame() {
   return;
 }
 
-void Game::endGame() {
+void Game::endGame(Player* winner) {
+  if (winner == &player1) {
+    output << "Checkmate. " << player1.getName() << "(White) wins!" << endl;
+    return;
+  }
+
+  if (winner == &player2) {
+    output << "Checkmate. " << player2.getName() << "(Black) wins!" << endl;
+    return;
+  }
+
+}
+
+void Game::quitGame() {
   char choice;
   output << "Are you sure you want to end the game?" << endl;
   output << "Enter 'Y' to confirm, or 'N' to continue playing: ";

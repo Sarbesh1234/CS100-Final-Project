@@ -2,6 +2,8 @@
 #include "Square.hpp"
 #include <string>
 #include <sstream>
+#include "Player.hpp"
+#include "Game.hpp"
 
 using std::string;
 
@@ -11,4 +13,5 @@ class Board {
   public: 
     Board();
     string displayBoard(bool flipped);
+    std::pair<bool, PieceColor> checkMate();
 };
