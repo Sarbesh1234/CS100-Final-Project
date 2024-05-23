@@ -53,3 +53,36 @@ string Board::displayBoard(bool flipped) {
   }
   return ss.str();
 }
+
+std::pair<bool, PieceColor> Board::checkMate() {
+  int count = 0;
+  bool white, black;
+  for (int i = 0; i < 8; ++i) {
+    for (int j = 0; j < 8; ++j) {
+      if (board[i][j].getPiece()->getSymbol() == "wK") {
+        white = true;
+        count++;
+      }
+
+      else if (board[i][j].getPiece()->getSymbol() == "bK") {
+        black = true;
+        count++;
+      }  
+    }
+  }
+
+  PieceColor winnerColor;
+
+  if (white && !black ) {
+    winnerColor = PieceColor::WHITE;
+    return make_pair(true, winnerColor);
+  }
+
+  else if (black && !white) {
+    winnerColor = PieceColor::BLACK;
+    return make_pair(true, winnerColor);  
+  } 
+
+
+  return make_pair(false, winnerColor);
+}
