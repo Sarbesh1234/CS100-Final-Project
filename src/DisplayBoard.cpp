@@ -4,8 +4,7 @@
 using std::endl;
 
 
-DisplayBoard::DisplayBoard(Board* board) {
-  this->board = board;
+DisplayBoard::DisplayBoard(Board& board): board(board) {
 }
 
 string DisplayBoard::displayBoard(bool flipped) {
@@ -31,10 +30,11 @@ string DisplayBoard::displayBoard(bool flipped) {
     ss << "|";
     for (int j = startingIndex; flipped ? j > endingIndex : j < endingIndex; j += increment) {
       // if piece does not exist, print a dash, otherwise print the piece
-      if (board[i][j]->getPiece() == nullptr) {
+      Square* currentSquare = board.getSquare(i, j);
+      if (currentSquare->getPiece() == nullptr) {
         ss << " -- ";
       } else {
-        Piece* currentPiece = board[i][j]->getPiece();
+        Piece* currentPiece = currentSquare->getPiece();
         ss << " " << currentPiece->getSymbol() << " ";
       }
       ss << "|";

@@ -10,6 +10,7 @@ add_library(chessLibrary
   ./Pieces/Pawn.cpp
   ./Pieces/Queen.cpp
   ./Pieces/Rook.cpp
+  DisplayBoard.cpp
 )
 find_library(M_LIB m)
 target_link_libraries(chessLibrary ${M_LIB})
