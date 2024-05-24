@@ -89,6 +89,7 @@ string Board::displayBoard(bool flipped) {
 }
 
 std::pair<bool, PieceColor> Board::checkMate() {
+  
   int count = 0;
   bool white, black;
   for (int i = 0; i < 8; ++i) {
