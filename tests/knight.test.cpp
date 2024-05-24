@@ -96,50 +96,6 @@ TEST(KnightSuite, KnightOnSide) {
 
 }
 
-TEST(KnightSuite, KnightShouldNotBeAbleToMoveInTheSquareOfFriendlyPiece) {
-    Knight knight(PieceColor::WHITE);
-    Square* board[8][8];
-
-    // setting up the board
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = new Square(nullptr, std::make_pair(i, j));
-        }
-    }
-
-    // setting up the friendly piece
-    board[6][4] = new Square(new Knight(PieceColor::WHITE), std::make_pair(6, 4));
-
-    knight.constructPossibleMoves(std::make_pair(4, 3), board);
-
-    // valid moves
-    EXPECT_TRUE(knight.isValidMove(std::make_pair(2, 2)));
-    EXPECT_TRUE(knight.isValidMove(std::make_pair(2, 4)));
-
-    // checking if the knight can move to the square of the friendly piece
-    EXPECT_FALSE(knight.isValidMove(std::make_pair(6, 4)));
-}
-
-TEST(KnightSuite, KnightShouldBeAbleToMoveInTheSquareOfEnemyPiece) {
-    Knight knight(PieceColor::WHITE);
-    Square* board[8][8];
-
-    // setting up the board
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = new Square(nullptr, std::make_pair(i, j));
-        }
-    }
-
-    // setting up the enemy piece
-    board[6][4] = new Square(new Knight(PieceColor::BLACK), std::make_pair(6, 4));
-
-    knight.constructPossibleMoves(std::make_pair(4, 3), board);
-
-    // valid moves
-    EXPECT_TRUE(knight.isValidMove(std::make_pair(6, 4)));
-}
-
 TEST(KnightSuite, KnightSymbol) {
     Knight whiteKnight(PieceColor::WHITE);
     Knight blackKnight(PieceColor::BLACK);

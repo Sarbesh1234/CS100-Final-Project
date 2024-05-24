@@ -1,78 +1,40 @@
 #include "../../header/Pieces/Bishop.hpp"
-#include "../../header/Square.hpp"
 
 Bishop::Bishop(PieceColor color) {
-  this->color = color;
-  this->symbol = "B";
+    this->color = color;
+    this->symbol = "B";
 }
 
-void Bishop::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
-  this->possibleMoves.clear();
+void Bishop::constructPossibleMoves(pair<int, int> currentPosition) {
+    this->possibleMoves.clear();
 
-  int row = currentPosition.first;
-  int col = currentPosition.second;
+    int row = currentPosition.first;
+    int col = currentPosition.second;
 
-  Square* currentSquare = nullptr;
-
-  while (row < 7 && col < 7) {
-    row++;
-    col++;
-    currentSquare = this->getNextSquare(row, col, board);
-    if (currentSquare && currentSquare->hasPiece()) {
-      if (!this->isPieceFriendly(currentSquare->getPiece())) {
+    while(row < 7 && col < 7) {
+        row++;
+        col++;
         this->possibleMoves.push_back(std::make_pair(row, col));
-      }
-      break;
-    } else {
-      this->possibleMoves.push_back(std::make_pair(row, col));
     }
-  }
-
-  row = currentPosition.first;
-  col = currentPosition.second;
-  while (row > 0 && col > 0) {
-    row--;
-    col--;
-    currentSquare = this->getNextSquare(row, col, board);
-    if (currentSquare && currentSquare->hasPiece()) {
-      if (!this->isPieceFriendly(currentSquare->getPiece())) {
+    row = currentPosition.first;
+    col = currentPosition.second;
+    while(row > 0 && col > 0) {
+        row--;
+        col--;
         this->possibleMoves.push_back(std::make_pair(row, col));
-      }
-      break;
-    } else {
-      this->possibleMoves.push_back(std::make_pair(row, col));
     }
-  }
-  row = currentPosition.first;
-  col = currentPosition.second;
-  while (row < 7 && col > 0) {
-    row++;
-    col--;
-
-    currentSquare = this->getNextSquare(row, col, board);
-    if (currentSquare && currentSquare->hasPiece()) {
-      if (!this->isPieceFriendly(currentSquare->getPiece())) {
+    row = currentPosition.first;
+    col = currentPosition.second;
+    while(row < 7 && col > 0) {
+        row++;
+        col--;
         this->possibleMoves.push_back(std::make_pair(row, col));
-      }
-      break;
-    } else {
-      this->possibleMoves.push_back(std::make_pair(row, col));
     }
-  }
-  row = currentPosition.first;
-  col = currentPosition.second;
-  while (row > 0 && col < 7) {
-    row--;
-    col++;
-
-    currentSquare = this->getNextSquare(row, col, board);
-    if (currentSquare && currentSquare->hasPiece()) {
-      if (!this->isPieceFriendly(currentSquare->getPiece())) {
+    row = currentPosition.first;
+    col = currentPosition.second;
+    while(row > 0 && col < 7) {
+        row--;
+        col++;
         this->possibleMoves.push_back(std::make_pair(row, col));
-      }
-      break;
-    } else {
-      this->possibleMoves.push_back(std::make_pair(row, col));
     }
-  }
 }

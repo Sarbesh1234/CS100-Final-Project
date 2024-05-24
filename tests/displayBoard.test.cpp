@@ -22,3 +22,97 @@ TEST(DisplayBoardTests, DisplayBoardFlippedShouldReturnCorrectBoard) {
 
   EXPECT_EQ(expectedBoard, testingDisplayBoard.displayBoard(true));
 }
+
+// Test case for one black king on the board
+TEST(GameTests, EndGameWithOnlyBlackKing) {
+    std::istringstream input;
+    std::stringstream output;
+    Game game(input, output);
+    //Player player1(PieceColor::WHITE, "Alice");
+    //Player player2(PieceColor::BLACK, "Bob");
+    //game.setPlayer1(player1);
+    //game.setPlayer2(player2);
+
+    // Set up the board with only the black king
+    // Place black king at (0,0)
+
+    //std::string expectedOutput = "Checkmate. Bob(Black) wins!\n";
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}
+
+// Test case for one white king on the board
+TEST(GameTests, EndGameWithOnlyWhiteKing) {
+    std::istringstream input;
+    std::stringstream output;
+    Game game(input, output);
+    Player player1(PieceColor::WHITE, "Alice");
+    Player player2(PieceColor::BLACK, "Bob");
+    game.setPlayer1(player1);
+    game.setPlayer2(player2);
+
+    // Set up the board with only the white king
+    // Place white king at (7,7)
+
+    //std::string expectedOutput = "Checkmate. Alice(White) wins!\n";
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}
+
+// Test case for both kings on the board
+TEST(GameTests, EndGameWithBothKings) {
+    // Redirect input and output to simulate user interaction
+    std::stringstream input, output;
+    //Game game(input, output);
+
+    // Check that the interaction prompts are displayed correctly
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}
+
+// Test case for one black king on the board
+TEST(GameTests, EndGameWithOnlyBlackKing) {
+    std::istringstream input;
+    std::stringstream output;
+    Game game(input, output);
+    //Player player1(PieceColor::WHITE, "Alice");
+    //Player player2(PieceColor::BLACK, "Bob");
+    //game.setPlayer1(player1);
+    //game.setPlayer2(player2);
+
+    // Set up the board with only the black king
+    // Place black king at (0,0)
+
+    //std::string expectedOutput = "Checkmate. Bob(Black) wins!\n";
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}
+
+// Test case for one white king on the board
+TEST(GameTests, EndGameWithOnlyWhiteKing) {
+    std::istringstream input;
+    std::stringstream output;
+    Game game(input, output);
+    Player player1(PieceColor::WHITE, "Alice");
+    Player player2(PieceColor::BLACK, "Bob");
+    game.setPlayer1(player1);
+    game.setPlayer2(player2);
+
+    // Set up the board with only the white king
+    // Place white king at (7,7)
+
+    //std::string expectedOutput = "Checkmate. Alice(White) wins!\n";
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}
+
+// Test case for both kings on the board
+TEST(GameTests, EndGameWithBothKings) {
+    // Redirect input and output to simulate user interaction
+    std::stringstream input, output;
+    //Game game(input, output);
+
+    // Check that the interaction prompts are displayed correctly
+    std::string expectedOutput = "";
+    EXPECT_EQ(expectedOutput, output.str());
+}

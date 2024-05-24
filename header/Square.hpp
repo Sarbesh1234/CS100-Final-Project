@@ -5,6 +5,8 @@
 
 using std::pair;
 
+using std::pair;
+
 class Square {
     private:
         Piece* piece;
@@ -16,5 +18,4 @@ class Square {
         pair<int, int> getIndex();
         void setPiece(Piece* piece);
         void setIndex(pair<int, int> index);
-        bool hasPiece() const;
 };

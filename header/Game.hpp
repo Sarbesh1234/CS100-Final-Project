@@ -1,12 +1,12 @@
 #pragma once
 
-#include <iostream>
-#include <istream>
 #include <ostream>
+#include <istream>
 #include <string>
-#include "Player.hpp"
 #include "Board.hpp"
 #include "Piece.hpp"
+#include "Player.hpp"
+
 
 using namespace std;
 
@@ -19,6 +19,7 @@ class Game {
     Player& currentPlayer;
     istream& input;
     ostream& output;
+    pair<int,int> getMoveCoordinateHelper();
 
     public: 
         Game(istream& input, ostream& output) 
@@ -29,7 +30,12 @@ class Game {
         void startGame();
         void startNewGame();
         void loadSavedGame();
-        void endGame();
+        void endGame(Player*);
+        void quitGame();
         void saveGame();
+        void setPlayer1(Player player) {this->player1 = player;}
+        void setPlayer2(Player player) {this->player2 = player;}
         void askUserForMove();
+        Player* getPlayerOne() {return &player1; }
+        Player* getPlayerTwo() { return &player2; }
 };
