@@ -1,5 +1,8 @@
-#include "Game.hpp"
-#include "Board.hpp"
+#include "../header/Game.hpp"
+
+#include <cctype>
+
+#include "../header/Board.hpp"
 
 using namespace std;
 
@@ -10,8 +13,7 @@ void Game::startGame() {
     if (userInput.empty()) {
       output << "Please enter a choice." << endl;
       startGame();
-    }
-    else if (userInput == "start") {
+    } else if (userInput == "start") {
       startNewGame();
       break;
     } else if (userInput == "continue") {
@@ -63,7 +65,6 @@ void Game::endGame(Player* winner) {
     output << "Checkmate. " << player2.getName() << "(Black) wins!" << endl;
     return;
   }
-
 }
 
 void Game::quitGame() {
@@ -72,7 +73,7 @@ void Game::quitGame() {
   output << "Enter 'Y' to confirm, or 'N' to continue playing: ";
   while (input >> choice) {
     if (choice == 'Y' || choice == 'y') {
-    // Ask if the user wants to save the game before ending
+      // Ask if the user wants to save the game before ending
       char saveChoice;
       output << "Do you want to save the game before ending? (Y/N): ";
       input >> saveChoice;
@@ -89,14 +90,41 @@ void Game::quitGame() {
     }
 
     else {
-        output << "Invalid choice. Please enter 'Y' or 'N'." << endl;
-        output << "Are you sure you want to end the game?" << endl;
-        output << "Enter 'Y' to confirm, or 'N' to continue playing: ";
+      output << "Invalid choice. Please enter 'Y' or 'N'." << endl;
+      output << "Are you sure you want to end the game?" << endl;
+      output << "Enter 'Y' to confirm, or 'N' to continue playing: ";
     }
-  }  
+  }
 }
 
 void Game::saveGame() {
 }
+
 void Game::askUserForMove() {
+  output << "Enter position of piece you want to move: " << endl;
+  std::pair<int, int> toCoordinate = getMoveCoordinateHelper();
+  output << "Choose position to move piece to: " << endl;
+  std::pair<int, int> fromCoordinate = getMoveCoordinateHelper();
+}
+
+std::pair<int, int> Game::getMoveCoordinateHelper() {
+  string inputMove;
+  std::pair<int, int> pair;
+  while (input >> inputMove) {
+    if (inputMove.size() == 2) {
+      char inputChar = inputMove[0];
+      char inputInt = inputMove[1];
+      inputChar = toupper(inputChar);
+      if (('A' <= inputChar && inputChar <= 'H')) {
+        inputChar = inputChar - 16;
+        if (inputInt >= 49 && inputInt <= 56) {
+          pair.first = inputChar - '0';
+          pair.second = inputInt - '0';
+          break;
+        }
+      }
+    }
+    output << "Invalid Move! Please enter a valid position: " << endl;
+  }
+  return pair;
 }
