@@ -98,5 +98,6 @@ void Game::quitGame() {
 
 void Game::saveGame() {
 }
+
 void Game::askUserForMove() {
 }
