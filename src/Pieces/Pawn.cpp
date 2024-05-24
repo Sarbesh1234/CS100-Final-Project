@@ -13,13 +13,24 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]
 
     std::list<pair<int, int> > mutations;
 
-    mutations.push_back(std::make_pair(-1, 0)); // up
-    mutations.push_back(std::make_pair(-1, -1)); // up left
-    mutations.push_back(std::make_pair(-1, 1)); // up right
+    if(this->color == WHITE) {
+        mutations.push_back(std::make_pair(-1, 0)); // up
+        mutations.push_back(std::make_pair(-1, -1)); // up left
+        mutations.push_back(std::make_pair(-1, 1)); // up right
 
-    if(not hasMoved) {
-        mutations.push_back(std::make_pair(-2, 0)); // up 2
-        hasMoved = true;
+        if(not hasMoved) {
+            mutations.push_back(std::make_pair(-2, 0)); // up 2
+            hasMoved = true;
+        }   
+    }else {
+        mutations.push_back(std::make_pair(1, 0)); // down
+        mutations.push_back(std::make_pair(1, -1)); // down left
+        mutations.push_back(std::make_pair(1, 1)); // down right
+
+        if(not hasMoved) {
+            mutations.push_back(std::make_pair(2, 0)); // down 2
+            hasMoved = true;
+        }
     }
 
     int row = currentPosition.first;

@@ -16,6 +16,21 @@ TEST(PawnSuite, PawnInMiddleFirstMove) {
 
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(4, 4)));
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(5, 4)));
+
+}
+
+TEST(BlackPawnSuite, PawnInMiddleFirstMove) {
+    Pawn pawn(PieceColor::BLACK);
+
+    pawn.constructPossibleMoves(std::make_pair(4, 4));
+
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(5, 4)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(5, 3)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(5, 5)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(6, 4)));
+
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(4, 4)));
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(3, 4)));
 }
 
 TEST(PawnSuite, PawnInMiddleSecondMove) {
@@ -34,6 +49,24 @@ TEST(PawnSuite, PawnInMiddleSecondMove) {
 
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(2, 4)));
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(0, 4)));
+
+}
+
+TEST(BlackPawnSuite, PawnInMiddleSecondMove) {
+    Pawn pawn(PieceColor::BLACK);
+    
+    // first move to set flag
+    pawn.constructPossibleMoves(std::make_pair(4, 4));
+
+    // second move
+    pawn.constructPossibleMoves(std::make_pair(2, 4));
+
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(3, 4)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(3, 3)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(3, 5)));
+
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(2, 4)));
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(5, 4)));
 }
 
 TEST(PawnSuite, PawnInCorner) {
@@ -57,6 +90,31 @@ TEST(PawnSuite, PawnInCorner) {
 
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(7, 7)));
     EXPECT_FALSE(pawn.isValidMove(std::make_pair(5, 7)));
+
+}
+
+TEST(BlackPawnSuite, PawnInCorner) {
+
+    //top left corner first move
+    Pawn pawn(PieceColor::BLACK);
+
+    pawn.constructPossibleMoves(std::make_pair(0, 7));
+
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(1, 7)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(1, 6)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(2, 7)));
+
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(0, 7)));
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(0, 6)));
+
+    // top right corner second move
+    pawn.constructPossibleMoves(std::make_pair(0, 0));
+
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(1, 0)));
+    EXPECT_TRUE(pawn.isValidMove(std::make_pair(1, 1)));
+
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(0, 0)));
+    EXPECT_FALSE(pawn.isValidMove(std::make_pair(2, 0)));
 
 }
 
