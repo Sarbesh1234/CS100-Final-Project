@@ -64,6 +64,109 @@ TEST(BishopSuite, BishopOnSide) {
     EXPECT_FALSE(bishop.isValidMove(std::make_pair(0, 5)));
 }
 
+TEST(BishopSuite, BishopShouldNotBeAbleToMovePastAPieceGoingUpAndLeft) {
+    Bishop bishop(PieceColor::WHITE);
+
+    Square* board[8][8];
+
+     for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            board[i][j] = new Square(nullptr, std::make_pair(i, j));
+        }
+    }
+
+    board[3][3] = new Square(new Bishop(PieceColor::WHITE), std::make_pair(3, 3));
+
+    // starting from the bottom
+    bishop.constructPossibleMoves(std::make_pair(5, 5), board);
+
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(4, 4)));
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(6, 6)));
+    
+    // should not be able to move past the piece
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(3, 3)));
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(2, 2)));
+
+    // starting from the top
+    bishop.constructPossibleMoves(std::make_pair(1, 1), board);
+
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(2, 2)));
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(0, 0)));
+
+    // should not be able to move past the piece
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(3, 3)));
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(4, 4)));
+}
+
+TEST(BishopSuite, BishopShouldNotBeAbleToMovePastAPieceGoingUpAndRight) {
+    Bishop bishop(PieceColor::WHITE);
+
+    Square* board[8][8];
+
+     for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            board[i][j] = new Square(nullptr, std::make_pair(i, j));
+        }
+    }
+
+    board[3][3] = new Square(new Bishop(PieceColor::WHITE), std::make_pair(3, 3));
+
+    // starting from the bottom
+    bishop.constructPossibleMoves(std::make_pair(5, 1), board);
+
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(4, 2)));
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(6, 0)));
+    
+    // should not be able to move past the piece
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(3, 3)));
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(2, 4)));
+
+    // starting from the top
+    bishop.constructPossibleMoves(std::make_pair(1, 5), board);
+
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(2, 4)));
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(0, 6)));
+
+    // should not be able to move past the piece
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(3, 3)));
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(4, 2)));
+}
+
+TEST(BishopSuite, BishopShouldBeAbleToMoveToTheLocationOfEnemy) {
+    Bishop bishop(PieceColor::WHITE);
+    Square* board[8][8];
+
+     for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            board[i][j] = new Square(nullptr, std::make_pair(i, j));
+        }
+    }
+
+    board[2][2] = new Square(new Bishop(PieceColor::BLACK), std::make_pair(2, 2));
+
+    bishop.constructPossibleMoves(std::make_pair(0, 0), board);
+
+    EXPECT_TRUE(bishop.isValidMove(std::make_pair(2, 2)));
+}
+
+TEST(BishopSuite, BishopShouldNotBeAbleToMovePastFriendlyPiece) {
+    Bishop bishop(PieceColor::WHITE);
+    Square* board[8][8];
+
+     for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            board[i][j] = new Square(nullptr, std::make_pair(i, j));
+        }
+    }
+
+    board[3][3] = new Square(new Bishop(PieceColor::WHITE), std::make_pair(3, 3));
+
+    // starting from the bottom
+    bishop.constructPossibleMoves(std::make_pair(5, 5), board);
+
+    EXPECT_FALSE(bishop.isValidMove(std::make_pair(3, 3)));
+}
+
 TEST(BishopSuite, BishopSymbol) {
     Bishop whiteBishop(PieceColor::WHITE);
     Bishop blackBishop(PieceColor::BLACK);

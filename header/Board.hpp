@@ -4,7 +4,6 @@
 
 #include "Square.hpp"
 #include "Player.hpp"
-#include "Game.hpp"
 
 using std::string;
 
