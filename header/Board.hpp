@@ -3,7 +3,6 @@
 #include <string>
 #include <sstream>
 #include "Player.hpp"
-#include "Game.hpp"
 
 using std::string;
 

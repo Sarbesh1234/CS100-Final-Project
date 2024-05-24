@@ -1,4 +1,5 @@
 #include "../header/Board.hpp"
+#include "Game.hpp"
 
 #include <string>
 
@@ -25,13 +26,17 @@ TEST(GameTests, EndGameWithOnlyBlackKing) {
     std::istringstream input;
     std::stringstream output;
     Game game(input, output);
-    //Player player1(PieceColor::WHITE, "Alice");
-    //Player player2(PieceColor::BLACK, "Bob");
-    //game.setPlayer1(player1);
-    //game.setPlayer2(player2);
+    Player player1(PieceColor::WHITE, "Alice");
+    Player player2(PieceColor::BLACK, "Bob");
+    game.setPlayer1(player1);
+    game.setPlayer2(player2);
 
     // Set up the board with only the black king
     // Place black king at (0,0)
+    //Board gameBoard = Board();
+    //gameBoard.~Board();
+    //gameBoard.board(0, 0, new King(PieceColor::BLACK)); 
+    //game.endGame();
 
     //std::string expectedOutput = "Checkmate. Bob(Black) wins!\n";
     std::string expectedOutput = "";
@@ -50,6 +55,11 @@ TEST(GameTests, EndGameWithOnlyWhiteKing) {
 
     // Set up the board with only the white king
     // Place white king at (7,7)
+    //Board gameBoard = Board();
+    //gameBoard.~Board();
+    //gameBoard.board(0, 0, new King(PieceColor::WHITE)); 
+    //game.endGame();
+
 
     //std::string expectedOutput = "Checkmate. Alice(White) wins!\n";
     std::string expectedOutput = "";
@@ -60,7 +70,7 @@ TEST(GameTests, EndGameWithOnlyWhiteKing) {
 TEST(GameTests, EndGameWithBothKings) {
     // Redirect input and output to simulate user interaction
     std::stringstream input, output;
-    //Game game(input, output);
+    Game game(input, output);
 
     // Check that the interaction prompts are displayed correctly
     std::string expectedOutput = "";
