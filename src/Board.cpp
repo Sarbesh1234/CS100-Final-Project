@@ -57,12 +57,12 @@ std::pair<bool, PieceColor> Board::checkMate() {
   bool white, black;
   for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
-      if (board[i][j]->getPiece()->getSymbol() == "wK") {
+      if (board[i][j]->getPiece()->getSymbol() == "Kw") {
         white = true;
         count++;
       }
 
-      else if (board[i][j]->getPiece()->getSymbol() == "bK") {
+      else if (board[i][j]->getPiece()->getSymbol() == "Kb") {
         black = true;
         count++;
       }  
