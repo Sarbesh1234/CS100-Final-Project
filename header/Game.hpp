@@ -6,6 +6,7 @@
 #include "Board.hpp"
 #include "Piece.hpp"
 #include "Player.hpp"
+#include "rapidjson/document.h"
 
 
 using namespace std;

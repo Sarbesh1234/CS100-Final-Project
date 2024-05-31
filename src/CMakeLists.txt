@@ -12,6 +12,9 @@ add_library(chessLibrary
   ./Pieces/Rook.cpp
   DisplayBoard.cpp
 )
+
+add_dependencies(chessLibrary rapidjson)
+
 find_library(M_LIB m)
 target_link_libraries(chessLibrary ${M_LIB})
 
