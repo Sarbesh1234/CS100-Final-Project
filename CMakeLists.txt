@@ -15,5 +15,15 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/test/lib/googlemock/include/
 )
 
+include(ExternalProject)
+include("${CMAKE_SOURCE_DIR}/vendor/CMakeLists.txt")
+
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+    ${GFLAGS_INCLUDE_DIR}
+    ${BENCHMARK_INCLUDE_DIR}
+    ${RAPIDJSON_INCLUDE_DIR}
+)
+
 add_subdirectory(src)
 add_subdirectory(tests)
