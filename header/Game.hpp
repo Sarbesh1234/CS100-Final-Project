@@ -1,12 +1,13 @@
 #pragma once
 
-#include <iostream>
-#include <istream>
 #include <ostream>
+#include <istream>
 #include <string>
-#include "Player.hpp"
 #include "Board.hpp"
 #include "Piece.hpp"
+#include "Player.hpp"
+#include "rapidjson/document.h"
+
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class Game {
     Player& currentPlayer;
     istream& input;
     ostream& output;
+    pair<int,int> getMoveCoordinateHelper();
 
     public: 
         Game(istream& input, ostream& output) 

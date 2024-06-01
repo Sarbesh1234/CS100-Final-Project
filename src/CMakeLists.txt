@@ -4,13 +4,17 @@ add_library(chessLibrary
   Piece.cpp
   Player.cpp
   Square.cpp
-  Pieces/King.cpp
-  Pieces/Pawn.cpp
-  Pieces/Knight.cpp
-  Pieces/Bishop.cpp
-  Pieces/Queen.cpp
-  Pieces/Rook.cpp
+  ./Pieces/Bishop.cpp
+  ./Pieces/King.cpp
+  ./Pieces/Knight.cpp
+  ./Pieces/Pawn.cpp
+  ./Pieces/Queen.cpp
+  ./Pieces/Rook.cpp
+  DisplayBoard.cpp
 )
+
+add_dependencies(chessLibrary rapidjson)
+
 find_library(M_LIB m)
 target_link_libraries(chessLibrary ${M_LIB})
 
