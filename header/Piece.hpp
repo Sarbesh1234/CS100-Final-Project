@@ -20,6 +20,7 @@ class Piece {
     public:
         // constructPossibleMoves needs to be public!!!
         virtual void constructPossibleMoves(pair<int, int>, Square* [8][8] = nullptr) = 0;  //abstract function to construct possible moves (unique to each piece)
+        virtual ~Piece() {}
         bool isPieceFriendly(Piece* piece) const;
         bool isValidMove(pair<int, int>) const;
         std::string getSymbol() const;  //returns the symbol of the piece

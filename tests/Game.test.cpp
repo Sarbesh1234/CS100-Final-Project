@@ -99,9 +99,9 @@ TEST(GameTest, StartGame_InvalidInput) {
  }
 
  // Test startNewGame() function with quit input immediately
- TEST(GameTest, StartGame_Continue) {
+ TEST(GameTest, StartGame_ContinueWithTestJSON) {
      // Simulate user input
-     std::istringstream input("continue\n");
+     std::istringstream input("continue\nB6\nA5");
 
      // Simulate output
      std::ostringstream output;
@@ -115,6 +115,12 @@ TEST(GameTest, StartGame_InvalidInput) {
      // Check if the output is as expected
      std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
      expectedOutput += "What game would you like to load?\n";
+     expectedOutput += "Game: Game Name\n";
+     expectedOutput += "Player 1: Rish\n";
+     expectedOutput += "Player 2: Justin\n";
+     expectedOutput += "Current move belongs to: Rish\n";
+     expectedOutput += "Enter position of piece you want to move: \nChoose position to move piece to: \n";
+
 
      ASSERT_EQ(output.str(), expectedOutput);
  }
@@ -196,6 +202,10 @@ TEST(GameTest, AskUserForMove_InvalidInputAgain) {
     // Check if the output is as expected
     std::string expectedOutput = "Enter position of piece you want to move: \nInvalid Move! Please enter a valid position: \nChoose position to move piece to: \nInvalid Move! Please enter a valid position: \n";
     ASSERT_EQ(output.str(), expectedOutput);
+}
+
+TEST(GameTest, LoadGame_WithValudInput) {
+    
 }
 
 

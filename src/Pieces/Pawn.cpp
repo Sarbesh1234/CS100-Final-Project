@@ -5,6 +5,8 @@ Pawn::Pawn(PieceColor color) : hasMoved(false) {
     this->symbol = "P";
 }
 
+Pawn::~Pawn() {}
+
 void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]) {
     // check to see if the pawn has moved. If it has, it can only move one square forward
     // if it hasn't, it can move two squares forward
@@ -36,7 +38,7 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* [8][8]
     int row = currentPosition.first;
     int col = currentPosition.second;
 
-    for (auto mutation : mutations) {
+    for(auto mutation : mutations) {
         int newRow = row + mutation.first;
         int newCol = col + mutation.second;
 
