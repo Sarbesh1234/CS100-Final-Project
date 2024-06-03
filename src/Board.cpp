@@ -84,3 +84,27 @@ std::pair<bool, PieceColor> Board::checkMate() {
 
   return make_pair(false, winnerColor);
 }
+
+void Board::updateBoard(pair<int, int> sPoint, pair<int, int> ePoint) {
+  Piece* movePiece = this->getSquare(sPoint.first, sPoint.second)->getPiece();
+  Square* destination = this->getSquare(ePoint.first, ePoint.second);
+
+  if (movePiece == nullptr) {return ;} 
+  else if (!movePiece->isValidMove(ePoint))  {
+    return;
+  }
+
+  else if (destination->hasPiece()) {
+    std::cout << "capturing piece";
+    capturePiece(ePoint);
+  }
+
+  destination->setPiece(movePiece);
+  //delete this->board[sPoint.first][sPoint.second]->getPiece();
+  this->board[sPoint.first][sPoint.second]->setPiece(nullptr);
+  return;
+}
+
+void Board::capturePiece(pair<int, int> point) {
+  return;
+}
