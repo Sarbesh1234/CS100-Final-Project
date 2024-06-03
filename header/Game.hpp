@@ -6,7 +6,6 @@
 #include "Board.hpp"
 #include "Piece.hpp"
 #include "Player.hpp"
-#include "rapidjson/document.h"
 
 
 using namespace std;
@@ -33,7 +32,8 @@ class Game {
         void loadSavedGame();
         void endGame(Player*);
         void quitGame();
-        void saveGame();
+        bool saveGame();
+        string convertGameToJson();
         void setPlayer1(Player player) {this->player1 = player;}
         void setPlayer2(Player player) {this->player2 = player;}
         void askUserForMove();
