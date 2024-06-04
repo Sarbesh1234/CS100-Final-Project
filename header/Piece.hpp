@@ -1,15 +1,36 @@
 
 
-enum PieceColor {WHITE, BLACK};
+enum PieceColor { WHITE,
+                  BLACK };
 #pragma once
-#include <vector>
+#include <algorithm>
 #include <list>
 #include <string>
-#include <algorithm>
+#include <vector>
 
 class Square;
 
 using std::pair;
+
+inline const char* PieceColorToString(PieceColor color) {
+  switch (color) {
+    case WHITE:
+      return "White";
+    case BLACK:
+      return "Black";
+    default:
+      return "";
+  }
+}
+
+inline const PieceColor StringToPieceColor(const std::string& color) {
+  if (color == "White")
+    return WHITE;
+  else if (color == "Black")
+    return BLACK;
+  else
+    return WHITE;
+}
 
 class Piece {
     protected:

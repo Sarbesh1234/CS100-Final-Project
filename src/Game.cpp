@@ -1,8 +1,13 @@
 #include "../header/Game.hpp"
 
+#include <cctype>
+#include <fstream>
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 #include "../header/Board.hpp"
 
+using namespace rapidjson;
 using namespace std;
 
 void Game::startGame() {
@@ -30,19 +35,19 @@ void Game::startNewGame() {
   string player2name;
   string gameInput;
   output << "Please enter your game name: ";
-  input >> gameName;
+  getline(input, gameName);
   output << "Please enter Player 1's name: ";
-  input >> player1name;
+  getline(input, player1name);
   player1 = Player(PieceColor::WHITE, player1name);
   output << "Please enter Player 2's name: ";
-  input >> player2name;
+  getline(input, player2name);
   player2 = Player(PieceColor::BLACK, player2name);
 
   output << "Enter \"quit\" to end the game." << endl;
   while (input >> gameInput) {
     if (gameInput == "quit") {
-      break;
       quitGame();
+      break;
     } else if (gameInput != "quit") {
       askUserForMove();
     }
@@ -142,12 +147,10 @@ void Game::quitGame() {
       output << "Game ended. Thank you for playing!" << endl;
       break;
     }
-
     else if (choice == 'N' || choice == 'n') {
       askUserForMove();
       break;
     }
-
     else {
       output << "Invalid choice. Please enter 'Y' or 'N'." << endl;
       output << "Are you sure you want to end the game?" << endl;
@@ -156,7 +159,90 @@ void Game::quitGame() {
   }
 }
 
-void Game::saveGame() {
+string Game::convertGameToJson() {
+  StringBuffer s;
+  Writer<StringBuffer> writer(s);
+  writer.StartObject();
+  // game name
+  writer.Key("gameName");
+  writer.String(gameName.c_str());
+  // player 1
+  writer.Key("player1");
+  writer.StartObject();
+
+  writer.Key("name");
+  writer.String(player1.getName().c_str());
+
+  writer.Key("color");
+  writer.String(PieceColorToString(player1.getColor()));
+
+  writer.Key("currentPlayer");
+  writer.Bool(&currentPlayer == &player1); // see if this works too
+
+  writer.EndObject();
+
+  // player 2
+  writer.Key("player2");
+  writer.StartObject();
+
+  writer.Key("name");
+  writer.String(player2.getName().c_str());
+
+  writer.Key("color");
+  writer.String(PieceColorToString(player2.getColor()));
+
+  writer.Key("currentPlayer");
+  writer.Bool(&currentPlayer == &player2);
+
+  writer.EndObject();
+
+  // board
+  writer.Key("board");
+
+  writer.StartArray();
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (board.getSquare(i, j)->getPiece() == nullptr) {
+        continue;
+      }
+      writer.StartObject();
+
+      // location of the piece in [row, column] formate
+      writer.Key("location");
+      writer.StartArray();
+      writer.Int(i);
+      writer.Int(j);
+      writer.EndArray();
+
+      // the type of piece as a char
+      writer.Key("piece");
+      const string pieceSymbol = board.getSquare(i, j)->getPiece()->getSymbol();
+      writer.String(pieceSymbol.c_str());
+
+      writer.EndObject();
+    }
+  }
+  writer.EndArray();
+
+  writer.EndObject();
+  return s.GetString();
+}
+
+bool Game::saveGame() {
+  string jsonGame = convertGameToJson();
+
+  string fileName = "saves/" + gameName + ".json";
+  ofstream file(fileName);
+
+  if (file.is_open()) {
+    file << jsonGame;
+    file.close();
+    output << "Game saved successfully!" << endl;
+    return true;
+  } else {
+    output << "Unable to save game. Please try again." << endl;
+    return false;
+  }
 }
 
 void Game::askUserForMove() {

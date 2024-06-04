@@ -39,13 +39,15 @@ Our application will involve a functional two-player chess game that adheres to 
 
 
 ## Class Diagram
-![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/68723dd0-0f38-455e-ab98-bdde46bc329f)
+![R'Chess UML (0)](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/88c2ea4b-87f2-4927-a10e-bc1a34be69bf)
+
 
 
 ## Phase III
 
 Updated UML diagram
-![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/966a657c-bc42-4a26-ae26-617a8388b797)
+![R'Chess UML](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/112200249/4f7400e5-c852-4ae7-afff-d654687fe6ae)
+
 
 The SOLID principle applied in our new UML diagram is the Single Responsibility Principle. We applied it by making a new class called DisplayBoard that was in charge of displaying the board to the terminal, as opposed to the Board class being in charge of printing. This ensure that the Board has only the responsibility of holding the locations of the Pieces by being a 2D array of Square pointers. This change has helped us write better code because it makes less tests for either class, and it keeps the classes smaller and more organized. 
  
