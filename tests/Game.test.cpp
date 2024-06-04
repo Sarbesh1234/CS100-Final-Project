@@ -103,7 +103,7 @@ TEST(GameTest, StartGame_InvalidInput) {
      ASSERT_EQ(output.str(), expectedOutput);
  }
 
- // Test startNewGame() function with quit input immediately
+ // Test will load test.json from saves folder
  TEST(GameTest, StartGame_ContinueWithTestJSON) {
      // Simulate user input
      std::istringstream input("continue\nB6\nA5");
@@ -124,7 +124,6 @@ TEST(GameTest, StartGame_InvalidInput) {
      expectedOutput += "Player 1: Rish\n";
      expectedOutput += "Player 2: Justin\n";
      expectedOutput += "Current move belongs to: Rish\n";
-     expectedOutput += "Enter position of piece you want to move: \nChoose position to move piece to: \n";
 
 
      ASSERT_EQ(output.str(), expectedOutput);
@@ -208,11 +207,6 @@ TEST(GameTest, AskUserForMove_InvalidInputAgain) {
     std::string expectedOutput = "Enter position of piece you want to move: \nInvalid Move! Please enter a valid position: \nChoose position to move piece to: \nInvalid Move! Please enter a valid position: \n";
     ASSERT_EQ(output.str(), expectedOutput);
 }
-
-TEST(GameTest, LoadGame_WithValudInput) {
-    
-}
-
 
 TEST(GameTest, SaveGame_RegularDefaultGameBoard) {
     // Simulate user input

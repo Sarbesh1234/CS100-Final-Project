@@ -34,6 +34,9 @@ void Game::startNewGame() {
   string player1name;
   string player2name;
   string gameInput;
+
+  board.initializeBoard();
+
   output << "Please enter your game name: ";
   getline(input, gameName);
   output << "Please enter Player 1's name: ";
@@ -79,7 +82,7 @@ void Game::loadSavedGame() {
   }
   
   // get the game name
-  gameName = document["gameName "].GetString();
+  gameName = document["gameName"].GetString();
   output << "Game: " << gameName << endl;
 
   // get the player names
@@ -113,8 +116,6 @@ void Game::loadSavedGame() {
   fclose(file);
 
   board.reinitializeBoard(locsAndSymbol);
-
-  askUserForMove();
 
   return;
 }

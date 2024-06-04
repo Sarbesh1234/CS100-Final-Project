@@ -18,6 +18,6 @@ class Board {
   std::pair<bool, PieceColor> checkMate();
   void initializeBoard();
   void clearBoard();
-  void reinitializeBoard(vector<pair<pair<int, int>, string>> piecesAndLocs);
+  void reinitializeBoard(vector<pair<pair<int, int>, string>>& piecesAndLocs);
   Piece* symbolToPiece(const string& symbol);
 };

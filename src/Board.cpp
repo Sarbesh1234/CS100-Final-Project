@@ -98,7 +98,7 @@ void Board::clearBoard() {
   }
 }
 
-void Board::reinitializeBoard(vector<pair<pair<int, int>, string>> symbolsAndLocs) {
+void Board::reinitializeBoard(vector<pair<pair<int, int>, string>>& symbolsAndLocs) {
   clearBoard();
 
   for(auto& symbolAndLocation: symbolsAndLocs) {
