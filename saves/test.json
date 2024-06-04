@@ -1,5 +1,5 @@
 {
-  "gameName ": "Game Name",
+  "gameName": "Game Name",
   "player1": { "name": "Rish", "color": "White", "currentPlayer": true },
   "player2": { "name": "Justin", "color": "Black", "currentPlayer": false },
   "board": [

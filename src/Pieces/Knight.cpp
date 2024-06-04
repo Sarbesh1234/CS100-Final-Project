@@ -5,6 +5,8 @@ Knight::Knight(PieceColor color) {
   this->color = color;
 }
 
+Knight::~Knight() {}
+
 void Knight::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
   this->possibleMoves.clear();
 

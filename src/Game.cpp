@@ -4,12 +4,10 @@
 #include <fstream>
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
- 
-using namespace rapidjson;
-
 
 #include "../header/Board.hpp"
 
+using namespace rapidjson;
 using namespace std;
 
 void Game::startGame() {
@@ -36,6 +34,9 @@ void Game::startNewGame() {
   string player1name;
   string player2name;
   string gameInput;
+
+  board.initializeBoard();
+
   output << "Please enter your game name: ";
   getline(input, gameName);
   output << "Please enter Player 1's name: ";
@@ -57,7 +58,65 @@ void Game::startNewGame() {
 }
 
 void Game::loadSavedGame() {
+  // need to choose from a list of saved games
   output << "What game would you like to load?" << endl;
+
+  // load the game
+  FILE* file = fopen("saves/test.json", "r");
+
+  if(file == nullptr) {
+    output << "Could not open file :(\n";
+    return;
+  }
+  
+  char readBuffer[65536];
+  rapidjson::FileReadStream is(file, readBuffer, sizeof(readBuffer));
+
+  rapidjson::Document document; 
+
+  document.ParseStream(is);
+  // check if the document is valid
+  if (document.HasParseError()) {
+    output << "Error parsing the JSON file. Could not open game" << endl;
+    return;
+  }
+  
+  // get the game name
+  gameName = document["gameName"].GetString();
+  output << "Game: " << gameName << endl;
+
+  // get the player names
+  player1.setName(document["player1"]["name"].GetString());
+  output << "Player 1: " << player1.getName() << endl;
+  player1.setColor(document["player1"]["color"] == "White" ? WHITE : BLACK);
+  currentPlayer = document["player1"]["currentPlayer"] == true ? player1 : player2;
+
+
+  player2.setName(document["player2"]["name"].GetString());
+  output << "Player 2: " << player2.getName() << endl;
+  player2.setColor(document["player2"]["color"] == "White" ? WHITE : BLACK);
+
+  output << "Current move belongs to: " << currentPlayer.getName() << endl;
+
+  if(!document["board"].IsArray()) {
+    output << "Error parsing the JSON file. Could not open game" << endl;
+    return;
+  }
+
+  // get the board
+  const rapidjson::Value& jsonBoard = document["board"].GetArray();
+  std::vector<pair<pair<int, int>, string>> locsAndSymbol;
+  for(rapidjson::Value::ConstValueIterator itr = jsonBoard.Begin(); itr != jsonBoard.End(); itr++) {
+    pair<int, int> currentLocation = std::make_pair(itr->FindMember("location")->value.GetArray()[0].GetInt(), itr->FindMember("location")->value.GetArray()[1].GetInt());
+
+    string symbol = itr->FindMember("piece")->value.GetString();
+
+    locsAndSymbol.push_back(std::make_pair(currentLocation, symbol));
+  }
+  fclose(file);
+
+  board.reinitializeBoard(locsAndSymbol);
+
   return;
 }
 
