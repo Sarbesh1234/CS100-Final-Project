@@ -18,7 +18,7 @@ class Game {
     Player player2;
     string gameName;
     Board board;
-    Player& currentPlayer;
+    Player* currentPlayer;
     istream& input;
     ostream& output;
     pair<int,int> getMoveCoordinateHelper();
@@ -26,7 +26,7 @@ class Game {
     public: 
         Game(istream& input, ostream& output) 
         : input(input), output(output), player1(Player(PieceColor::WHITE, "Player 1")), 
-        player2(Player(PieceColor::BLACK, "Player 2")), currentPlayer(player1)
+        player2(Player(PieceColor::BLACK, "Player 2")), currentPlayer(&player1)
         {};
         
         void startGame();
@@ -38,6 +38,7 @@ class Game {
         string convertGameToJson();
         void setPlayer1(Player player) {this->player1 = player;}
         void setPlayer2(Player player) {this->player2 = player;}
+        void playGame();
         void askUserForMove();
         Player* getPlayerOne() {return &player1; }
         Player* getPlayerTwo() { return &player2; }
