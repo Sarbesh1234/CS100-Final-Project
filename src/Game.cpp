@@ -59,10 +59,44 @@ void Game::startNewGame() {
 
 void Game::loadSavedGame() {
   // need to choose from a list of saved games
-  output << "What game would you like to load?" << endl;
+  output << "What saved game would you like to load?" << endl << endl;
+  vector<string> files;
+
+  DIR* dir;
+  dirent* ent;
+
+  if((dir = opendir("./saves")) != nullptr) {
+    while((ent = readdir(dir)) != nullptr) {
+      string fullName = ent->d_name;
+      if(fullName == "." or fullName == "..") continue;
+      size_t pos = fullName.find(".json");
+      string name = fullName.substr(0, pos);
+      output << name << endl;
+      files.push_back(name);
+    }
+    closedir(dir);
+  }
+  if((dir = opendir("./saves")) == nullptr or files.empty()) {
+    output << "No saved games to load." << endl;
+    startGame();
+    return;
+  }
+
+checkFile:
+  string filename;
+  input >> filename;
+  
+  vector<string>::iterator itr = find(files.begin(), files.end(), filename);
+  if(itr == files.end()) {
+    output << "Could not find filename. Please try again." << endl;
+    goto checkFile;
+  }
+
+  string loadPath = "saves/" + filename + ".json";
+  const char* path = loadPath.c_str();
 
   // load the game
-  FILE* file = fopen("saves/test.json", "r");
+  FILE* file = fopen(path, "r");
 
   if(file == nullptr) {
     output << "Could not open file :(\n";

@@ -9,6 +9,7 @@
 #include "DisplayBoard.hpp"
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
+#include "dirent.h"
 
 using namespace std;
 

@@ -106,7 +106,7 @@ TEST(GameTest, StartGame_InvalidInput) {
  // Test will load test.json from saves folder
  TEST(GameTest, StartGame_ContinueWithTestJSON) {
      // Simulate user input
-     std::istringstream input("continue\nB6\nA5");
+     std::istringstream input("continue\ntest\nB6\nA5");
 
      // Simulate output
      std::ostringstream output;
@@ -119,7 +119,9 @@ TEST(GameTest, StartGame_InvalidInput) {
 
      // Check if the output is as expected
      std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
-     expectedOutput += "What game would you like to load?\n";
+     expectedOutput += "What saved game would you like to load?\n";
+     expectedOutput += "\n";
+     expectedOutput += "test\ntwoKings\n"; // list of games in saves
      expectedOutput += "Game: Game Name\n";
      expectedOutput += "Player 1: Rish\n";
      expectedOutput += "Player 2: Justin\n";
@@ -127,7 +129,36 @@ TEST(GameTest, StartGame_InvalidInput) {
 
 
      ASSERT_EQ(output.str(), expectedOutput);
- }
+}
+
+TEST(GameTest, StartGame_ContinueWithInvalidJSON) {
+    // Simulate user input
+     std::istringstream input("continue\ninvalid\ntwoKings");
+
+     // Simulate output
+     std::ostringstream output;
+
+     // Set input and output streams for the game
+     Game game(input, output);
+
+     // Call the function to be tested
+     game.startGame();
+
+     // Check if the output is as expected
+     std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
+     expectedOutput += "What saved game would you like to load?\n";
+     expectedOutput += "\n";
+     expectedOutput += "test\ntwoKings\n"; // list of games in saves
+     expectedOutput += "Could not find filename. Please try again.\n";
+     expectedOutput += "Game: 1v1\n";
+     expectedOutput += "Player 1: Andrew\n";
+     expectedOutput += "Player 2: Justin\n";
+     expectedOutput += "Current move belongs to: Player 2\n";
+
+
+     ASSERT_EQ(output.str(), expectedOutput);
+}
+
 
 //Test AskUserForMove() function
 TEST(GameTest, AskUserForMove) {
