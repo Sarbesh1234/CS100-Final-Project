@@ -45,6 +45,7 @@ class Piece {
         bool isPieceFriendly(Piece* piece) const;
         bool isValidMove(pair<int, int>) const;
         std::string getSymbol() const;  //returns the symbol of the piece
+        PieceColor getColor() const;    //returns the color of the piece
 };
 
 extern PieceColor ColorEnum;
