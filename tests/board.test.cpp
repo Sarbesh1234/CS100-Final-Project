@@ -16,6 +16,7 @@ TEST(BoardTest, InvalidMove) {
 
 TEST(BoardTest, FriendlyPieceAtDestination) {
     Board board;
+    //board.initializeBoard();
     Piece* testKnight = new Knight(PieceColor::WHITE);
     board.getSquare(5, 0)->setPiece(testKnight);
     board.updateBoard({6, 0}, {5, 0});
@@ -26,6 +27,7 @@ TEST(BoardTest, FriendlyPieceAtDestination) {
 
 TEST(BoardTest, ValidMoveToEmptySquare) {
     Board board;
+    //board.initializeBoard();
     board.updateBoard({6, 0}, {5, 0});
     //EXPECT_EQ(board.getSquare(5, 0)->getPiece()->getSymbol(), "Pw"); seg faults for some reason as if the piece is not being set
     //EXPECT_EQ(board.getSquare(6, 0)->getPiece(), nullptr); // cant pass because piece wont be deleted from starting point
