@@ -8,7 +8,7 @@
 
 using std::endl;
 
-Board::Board() {
+Board::Board(ostream& out) : output(out) {
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
       board[i][j] = new Square(nullptr, std::make_pair(i, j));
@@ -108,8 +108,31 @@ bool Board::updateBoard(pair<int, int> startPoint, pair<int, int> endPoint) {
 }
 
 void Board::capturePiece(pair<int, int> point) {
-  return;
+  Piece* capturedPiece = this->board[point.first][point.second]->getPiece();
+  if (capturedPiece->getSymbol()[1] == 'w') {
+    output << "White ";
+  }
+
+  else {
+    output << "Black ";
+  }
+
+  output << determinePiece(capturedPiece->getSymbol()) << " has been captured." << std::endl;
 }
+
+
+string Board::determinePiece(const string& symbol) {
+  char type = symbol[0];
+  if (type == 'K') { return "King"; }
+  else if (type== 'N') {return "Knight";}
+  else if (type == 'Q') { return "Queen";}
+  else if (type == 'B') { return "Bishop"; }
+  else if (type == 'R') { return "Rook";}
+  else if (type == 'P') { return "Pawn"; }
+
+  return "";
+}
+
 
 void Board::clearBoard() {
   for(int i = 0; i < 8; i++) {

@@ -10,9 +10,10 @@ using std::vector;
 
 class Board {
   Square* board[8][8];
+  ostream& output;
 
  public:
-  Board();
+  Board(ostream&);
   ~Board();
   Square* getSquare(int row, int col) const;
   std::pair<bool, PieceColor> checkMate();
@@ -22,4 +23,8 @@ class Board {
   void clearBoard();
   void reinitializeBoard(vector<pair<pair<int, int>, string>>& piecesAndLocs);
   Piece* symbolToPiece(const string& symbol);
+
+  private:
+  string determinePiece(const string& symbol);
+
 };
