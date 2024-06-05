@@ -129,6 +129,8 @@ void Board::capturePiece(pair<int, int> point) {
   }
 
   output << determinePiece(capturedPiece->getSymbol()) << " has been captured." << std::endl;
+
+  delete capturedPiece;
 }
 
 
