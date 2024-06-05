@@ -86,7 +86,7 @@ TEST(GameTest, StartGame_InvalidInput) {
  // Test will load test.json from saves folder
  TEST(GameTest, StartGame_ContinueWithTestJSON) {
      // Simulate user input
-     std::istringstream input("continue\ntest\nB6\nA5");
+     std::istringstream input("continue\ntest\nquit\nY\nN");
 
      // Simulate output
      std::ostringstream output;
@@ -106,6 +106,14 @@ TEST(GameTest, StartGame_InvalidInput) {
      expectedOutput += "Player 1: Rish\n";
      expectedOutput += "Player 2: Justin\n";
      expectedOutput += "Current move belongs to: Rish\n";
+     expectedOutput += "   ==========================================\n 8 | Rb | Nb | Bb | Kb | Qb | Bb | Nb | Rb |\n   ==========================================\n 7 | Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 4 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 2 | Pw | Pw | Pw | Pw | Pw | Pw | Pw | Pw |\n   ==========================================\n 1 | Rw | Nw | Bw | Kw | Qw | Bw | Nw | Rw |\n   ==========================================\n     A    B    C    D    E    F    G    H    \n";
+     expectedOutput += "\n";
+     expectedOutput += "It is Rish's turn.\n";
+     expectedOutput += "Enter \"quit\" to end the game or \"move\" to proceed.\n";
+     expectedOutput += "Are you sure you want to end the game?\n";
+     expectedOutput += "Enter 'Y' to confirm, or 'N' to continue playing: ";
+     expectedOutput += "Do you want to save the game before ending? (Y/N): ";
+     expectedOutput += "Game ended. Thank you for playing!\n";
 
 
      ASSERT_EQ(output.str(), expectedOutput);
@@ -113,7 +121,7 @@ TEST(GameTest, StartGame_InvalidInput) {
 
 TEST(GameTest, StartGame_ContinueWithInvalidJSON) {
     // Simulate user input
-     std::istringstream input("continue\ninvalid\ntwoKings");
+     std::istringstream input("continue\ninvalid\ntwoKings\nquit\nY\nN");
 
      // Simulate output
      std::ostringstream output;
@@ -133,7 +141,15 @@ TEST(GameTest, StartGame_ContinueWithInvalidJSON) {
      expectedOutput += "Game: 1v1\n";
      expectedOutput += "Player 1: Andrew\n";
      expectedOutput += "Player 2: Justin\n";
-     expectedOutput += "Current move belongs to: Player 2\n";
+     expectedOutput += "Current move belongs to: Justin\n";
+     expectedOutput += "   ==========================================\n 1 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 2 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 4 | -- | -- | -- | Kb | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | Kw | -- | -- | -- |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 7 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 8 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n     H    G    F    E    D    C    B    A\n";
+     expectedOutput += "\n";
+     expectedOutput += "It is Justin's turn.\n";
+     expectedOutput += "Enter \"quit\" to end the game or \"move\" to proceed.\n";
+     expectedOutput += "Are you sure you want to end the game?\n";
+     expectedOutput += "Enter 'Y' to confirm, or 'N' to continue playing: ";
+     expectedOutput += "Do you want to save the game before ending? (Y/N): ";
+     expectedOutput += "Game ended. Thank you for playing!\n";
 
 
      ASSERT_EQ(output.str(), expectedOutput);
