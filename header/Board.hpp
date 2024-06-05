@@ -19,6 +19,7 @@ class Board {
   std::pair<bool, PieceColor> checkMate();
   bool updateBoard(pair<int, int> startPoint, pair<int, int> endPoint);
   void capturePiece(pair<int, int> point);
+  void reconstructPossibleMoves();
   void initializeBoard();
   void clearBoard();
   void reinitializeBoard(vector<pair<pair<int, int>, string>>& piecesAndLocs);

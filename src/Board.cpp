@@ -1,16 +1,17 @@
 #include "../header/Board.hpp"
-#include "../header/Pieces/Rook.hpp"
-#include "../header/Pieces/Knight.hpp"
+
 #include "../header/Pieces/Bishop.hpp"
 #include "../header/Pieces/King.hpp"
-#include "../header/Pieces/Queen.hpp"
+#include "../header/Pieces/Knight.hpp"
 #include "../header/Pieces/Pawn.hpp"
+#include "../header/Pieces/Queen.hpp"
+#include "../header/Pieces/Rook.hpp"
 
 using std::endl;
 
 Board::Board(ostream& out) : output(out) {
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
       board[i][j] = new Square(nullptr, std::make_pair(i, j));
     }
   }
@@ -46,15 +47,25 @@ void Board::initializeBoard() {
   board[7][6]->setPiece(new Knight(PieceColor::WHITE));
   board[7][7]->setPiece(new Rook(PieceColor::WHITE));
 
+  // go through the board and construct the possible moves if there exists a piece there
+  reconstructPossibleMoves();
 }
 
+void Board::reconstructPossibleMoves() {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (board[i][j]->hasPiece()) {
+        board[i][j]->getPiece()->constructPossibleMoves(std::make_pair(i, j), board);
+      }
+    }
+  }
+}
 
 Square* Board::getSquare(int row, int col) const {
   return board[row][col];
 }
 
 std::pair<bool, PieceColor> Board::checkMate() {
-  
   int count = 0;
   bool white, black;
   for (int i = 0; i < 8; ++i) {
@@ -67,22 +78,21 @@ std::pair<bool, PieceColor> Board::checkMate() {
       else if (board[i][j]->getPiece()->getSymbol() == "Kb") {
         black = true;
         count++;
-      }  
+      }
     }
   }
 
   PieceColor winnerColor;
 
-  if (white && !black ) {
+  if (white && !black) {
     winnerColor = PieceColor::WHITE;
     return make_pair(true, winnerColor);
   }
 
   else if (black && !white) {
     winnerColor = PieceColor::BLACK;
-    return make_pair(true, winnerColor);  
-  } 
-
+    return make_pair(true, winnerColor);
+  }
 
   return make_pair(false, winnerColor);
 }
@@ -91,19 +101,20 @@ bool Board::updateBoard(pair<int, int> startPoint, pair<int, int> endPoint) {
   Piece* movePiece = this->getSquare(startPoint.first, startPoint.second)->getPiece();
   Square* destination = this->getSquare(endPoint.first, endPoint.second);
 
-  if (movePiece == nullptr) {return false;} 
-  else if (!movePiece->isValidMove(endPoint))  {
+  if (movePiece == nullptr || !movePiece->isValidMove(endPoint)) {
     return false;
-  }
-
-  else if (destination->hasPiece()) {
+  } 
+  if (destination->hasPiece()) {
     capturePiece(endPoint);
-    return true;
   }
 
+  // set the destination to the move piece
   destination->setPiece(movePiece);
-  //delete this->board[sPoint.first][sPoint.second]->getPiece();
-  this->board[startPoint.first][startPoint.second]->setPiece(nullptr);
+  // // delete the move piece from the start point
+  this->getSquare(startPoint.first, startPoint.second)->setPiece(nullptr);
+
+  // reconstruct the possible moves
+  reconstructPossibleMoves();
   return true;
 }
 
@@ -135,9 +146,9 @@ string Board::determinePiece(const string& symbol) {
 
 
 void Board::clearBoard() {
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
-      if(board[i][j]->hasPiece()) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (board[i][j]->hasPiece()) {
         delete board[i][j]->getPiece();
         board[i][j]->setPiece(nullptr);
       }
@@ -148,35 +159,36 @@ void Board::clearBoard() {
 void Board::reinitializeBoard(vector<pair<pair<int, int>, string>>& symbolsAndLocs) {
   clearBoard();
 
-  for(auto& symbolAndLocation: symbolsAndLocs) {
+  for (auto& symbolAndLocation : symbolsAndLocs) {
     int row = symbolAndLocation.first.first;
     int col = symbolAndLocation.first.second;
 
     Piece* newPiece = symbolToPiece(symbolAndLocation.second);
+    newPiece->constructPossibleMoves(std::make_pair(row, col), board);
 
     board[row][col]->setPiece(newPiece);
   }
 }
 
 Piece* Board::symbolToPiece(const std::string& symbol) {
-  switch(symbol[0]) {
+  switch (symbol[0]) {
     case 'K':
-      if(symbol[1] == 'w') return new King(WHITE);
+      if (symbol[1] == 'w') return new King(WHITE);
       return new King(BLACK);
     case 'Q':
-      if(symbol[1] == 'w') return new Queen(WHITE);
+      if (symbol[1] == 'w') return new Queen(WHITE);
       return new Queen(BLACK);
     case 'N':
-      if(symbol[1] == 'w') return new Knight(WHITE);
+      if (symbol[1] == 'w') return new Knight(WHITE);
       return new Knight(BLACK);
     case 'B':
-      if(symbol[1] == 'w') return new Bishop(WHITE);
+      if (symbol[1] == 'w') return new Bishop(WHITE);
       return new Bishop(BLACK);
     case 'R':
-      if(symbol[1] == 'w') return new Rook(WHITE);
+      if (symbol[1] == 'w') return new Rook(WHITE);
       return new Rook(BLACK);
     case 'P':
-      if(symbol[1] == 'w') return new Pawn(WHITE);
+      if (symbol[1] == 'w') return new Pawn(WHITE);
       return new Pawn(BLACK);
   }
 }

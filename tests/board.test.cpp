@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <utility>
 #include "../header/Board.hpp"
 #include "../header/Pieces/Rook.hpp"
 #include "../header/Pieces/Knight.hpp"
@@ -10,17 +11,19 @@
 TEST(BoardTest, InvalidMove) {
     Board board(std::cout);
     board.initializeBoard();
-    board.updateBoard({6, 0}, {7, 2});
+    bool res = board.updateBoard({6, 0}, {7, 2});
+    ASSERT_FALSE(res);
     EXPECT_EQ(board.getSquare(6, 0)->getPiece()->getSymbol(), "Pw"); // piece should remain
     EXPECT_EQ(board.getSquare(7, 2)->getPiece()->getSymbol(), "Bw"); // friendly piece
 }
 
 TEST(BoardTest, FriendlyPieceAtDestination) {
     Board board(std::cout);
-    board.initializeBoard();
     Piece* testKnight = new Knight(PieceColor::WHITE);
     board.getSquare(5, 0)->setPiece(testKnight);
-    board.updateBoard({6, 0}, {5, 0});
+    board.initializeBoard();
+    bool res = board.updateBoard({6, 0}, {5, 0});
+    ASSERT_FALSE(res);
     EXPECT_EQ(board.getSquare(6, 0)->getPiece()->getSymbol(), "Pw"); // piece should remain
     EXPECT_EQ(board.getSquare(5, 0)->getPiece()->getSymbol(), "Nw"); // friendly piece
 }
@@ -29,9 +32,10 @@ TEST(BoardTest, FriendlyPieceAtDestination) {
 TEST(BoardTest, ValidMoveToEmptySquare) {
     Board board(std::cout);
     board.initializeBoard();
-    board.updateBoard({6, 0}, {5, 0});
-    //EXPECT_EQ(board.getSquare(5, 0)->getPiece()->getSymbol(), "Pw"); seg faults for some reason as if the piece is not being set
-    //EXPECT_EQ(board.getSquare(6, 0)->getPiece(), nullptr); // cant pass because piece wont be deleted from starting point
+    bool res = board.updateBoard(std::make_pair(6, 0), std::make_pair(5, 0));
+    ASSERT_TRUE(res);
+    EXPECT_EQ(board.getSquare(6, 0)->getPiece(), nullptr);
+    EXPECT_EQ(board.getSquare(5, 0)->getPiece()->getSymbol(), "Pw");
 }
 
 TEST(BoardTest, CaptureBlackPiece) {
