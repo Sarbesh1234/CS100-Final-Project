@@ -109,6 +109,8 @@ bool Board::updateBoard(pair<int, int> startPoint, pair<int, int> endPoint) {
 
 void Board::capturePiece(pair<int, int> point) {
   return;
+}
+
 void Board::clearBoard() {
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
