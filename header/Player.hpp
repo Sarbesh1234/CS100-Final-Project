@@ -17,4 +17,5 @@ class Player {
   PieceColor getColor() { return color; }
   string getName() { return name; }
   void setName(const string& name) { this->name = name; }
+  void setColor(const PieceColor& color) { this->color = color; }
 };

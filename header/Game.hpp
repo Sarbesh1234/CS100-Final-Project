@@ -6,7 +6,9 @@
 #include "Board.hpp"
 #include "Piece.hpp"
 #include "Player.hpp"
-
+#include "DisplayBoard.hpp"
+#include "rapidjson/document.h"
+#include "rapidjson/filereadstream.h"
 
 using namespace std;
 

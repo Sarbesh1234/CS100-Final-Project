@@ -5,6 +5,8 @@ King::King(PieceColor color) {
   this->symbol = "K";
 }
 
+King::~King() {}
+
 void King::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
   this->possibleMoves.clear();
 
