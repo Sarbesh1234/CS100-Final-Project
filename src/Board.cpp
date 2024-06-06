@@ -73,7 +73,7 @@ Square* Board::getSquare(int row, int col) const {
 
 std::pair<bool, PieceColor> Board::checkMate() {
   int count = 0;
-  bool white, black;
+  bool white = false, black = false;
   for (int i = 0; i < 8; ++i) {
     for (int j = 0; j < 8; ++j) {
       if (board[i][j]->getPiece() == nullptr) {
