@@ -7,6 +7,8 @@ Queen::Queen(PieceColor color) {
   this->symbol = "Q";
 }
 
+Queen::~Queen() {}
+
 void Queen::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
   this->possibleMoves.clear();
 

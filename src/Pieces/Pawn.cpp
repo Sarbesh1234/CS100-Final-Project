@@ -1,15 +1,18 @@
 #include "../../header/Pieces/Pawn.hpp"
 
 Pawn::Pawn(PieceColor color) : hasMoved(false) {
-    this->color = color;
-    this->symbol = "P";
+  this->color = color;
+  this->symbol = "P";
 }
+
+Pawn::~Pawn() {}
+
 
 void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
     // check to see if the pawn has moved. If it has, it can only move one square forward
     // if it hasn't, it can move two squares forward
 
-    this->possibleMoves.clear();
+  this->possibleMoves.clear();
 
     std::list<pair<int, int> > mutations;
 
@@ -71,22 +74,31 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* board[
             }
         }
 
-        if(not hasMoved) {
-            mutations.push_back(std::make_pair(2, 0)); // down 2
-            hasMoved = true;
-        }
+    if (not hasMoved) {
+      mutations.push_back(std::make_pair(2, 0));  // down 2
+      hasMoved = true;
     }
+  }
 
-    int row = currentPosition.first;
-    int col = currentPosition.second;
+  int row = currentPosition.first;
+  int col = currentPosition.second;
 
-    for (auto mutation : mutations) {
-        int newRow = row + mutation.first;
-        int newCol = col + mutation.second;
+  Square* currentSquare = nullptr;
 
-        if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
-            this->possibleMoves.push_back(std::make_pair(newRow, newCol));
+  for (auto mutation : mutations) {
+    int newRow = row + mutation.first;
+    int newCol = col + mutation.second;
+
+    currentSquare = this->getNextSquare(newRow, newCol, board);
+
+    if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+      if (currentSquare && currentSquare->hasPiece()) {
+        if (!this->isPieceFriendly(currentSquare->getPiece())) {
+          this->possibleMoves.push_back(std::make_pair(newRow, newCol));
         }
+      } else {
+        this->possibleMoves.push_back(std::make_pair(newRow, newCol));
+      }
     }
-
+  }
 }

@@ -6,6 +6,8 @@ Rook::Rook(PieceColor color) {
     this->color = color;
 }
 
+Rook::~Rook() {}
+
 void Rook::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
     this->possibleMoves.clear();
 

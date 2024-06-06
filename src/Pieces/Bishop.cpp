@@ -6,6 +6,8 @@ Bishop::Bishop(PieceColor color) {
   this->symbol = "B";
 }
 
+Bishop::~Bishop() {}
+
 void Bishop::constructPossibleMoves(pair<int, int> currentPosition, Square* board[8][8]) {
   this->possibleMoves.clear();
 

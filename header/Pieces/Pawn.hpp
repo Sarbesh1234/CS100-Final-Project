@@ -8,4 +8,5 @@ class Pawn : public Piece {
     public:
         virtual void constructPossibleMoves(pair<int, int> currPosition, Square* [8][8] = nullptr) override; //constructs possible moves for the piece
         Pawn(PieceColor);  //constructor
+        ~Pawn();
 };
