@@ -1,4 +1,4 @@
-# R'Chess
+# R'Chess ![example workflow](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/actions/workflows/main.yml/badge.svg)
  
 Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https://github.com/jnalbert) [Rishabh Pillai](https://github.com/hackinrish) [Sarbesh Sankar](https://github.com/sarbesh1234)
 
@@ -61,7 +61,27 @@ The SOLID principle applied in our new UML diagram is the Single Responsibility 
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+
+ To run our project, first you must clone the repository recursively, using
+ ```
+ git clone --recursive https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019.git
+ ```
+
+ Once the project is installed, open the root directory and run cmake to install all dependencies.
+ ```
+ cmake .
+ ```
+
+ After, you can run make to compile
+ ```
+ make
+ ```
+
+ Finally, to start playing, run
+ ```
+ ./bin/startGame
+ ```
+ 
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ Our project was tested using the [GoogleTest](https://github.com/google/googletest) framework. It was validated using GitHub Actions Continuous Integration.
  

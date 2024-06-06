@@ -116,7 +116,7 @@ void Game::loadSavedGame() {
 
 checkFile:
   string filename;
-  input >> filename;
+  getline(input,filename);
   
   vector<string>::iterator itr = find(files.begin(), files.end(), filename);
   if(itr == files.end()) {
@@ -319,7 +319,6 @@ void Game::askUserForMove() {
   Square* fromSquare = board.getSquare(fromCoordinate.first, fromCoordinate.second);
 
   if (fromSquare->getPiece() == nullptr || (currentPlayer && fromSquare->getPiece()->getColor() != currentPlayer->getColor())) {
-    output << endl << endl << "We are here!" << endl;
     output << "There is no piece at that location or it is not your piece. Please try again." << endl;
     askUserForMove();
     return;
