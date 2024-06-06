@@ -24,8 +24,8 @@ void Board::initializeBoard() {
   board[0][0]->setPiece(new Rook(PieceColor::BLACK));
   board[0][1]->setPiece(new Knight(PieceColor::BLACK));
   board[0][2]->setPiece(new Bishop(PieceColor::BLACK));
-  board[0][3]->setPiece(new King(PieceColor::BLACK));
-  board[0][4]->setPiece(new Queen(PieceColor::BLACK));
+  board[0][3]->setPiece(new Queen(PieceColor::BLACK));
+  board[0][4]->setPiece(new King(PieceColor::BLACK));
   board[0][5]->setPiece(new Bishop(PieceColor::BLACK));
   board[0][6]->setPiece(new Knight(PieceColor::BLACK));
   board[0][7]->setPiece(new Rook(PieceColor::BLACK));
@@ -41,8 +41,8 @@ void Board::initializeBoard() {
   board[7][0]->setPiece(new Rook(PieceColor::WHITE));
   board[7][1]->setPiece(new Knight(PieceColor::WHITE));
   board[7][2]->setPiece(new Bishop(PieceColor::WHITE));
-  board[7][3]->setPiece(new King(PieceColor::WHITE));
-  board[7][4]->setPiece(new Queen(PieceColor::WHITE));
+  board[7][3]->setPiece(new Queen(PieceColor::WHITE));
+  board[7][4]->setPiece(new King(PieceColor::WHITE));
   board[7][5]->setPiece(new Bishop(PieceColor::WHITE));
   board[7][6]->setPiece(new Knight(PieceColor::WHITE));
   board[7][7]->setPiece(new Rook(PieceColor::WHITE));
