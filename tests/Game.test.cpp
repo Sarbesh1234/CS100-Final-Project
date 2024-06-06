@@ -86,7 +86,7 @@ TEST(GameTest, StartGame_InvalidInput) {
  // Test will load test.json from saves folder
  TEST(GameTest, StartGame_ContinueWithTestJSON) {
      // Simulate user input
-     std::istringstream input("continue\nmove\nA2\nA3\nquit\nY\nN");
+     std::istringstream input("continue\ntest\nquit\nY\nN");
 
      // Simulate output
      std::ostringstream output;
@@ -98,11 +98,63 @@ TEST(GameTest, StartGame_InvalidInput) {
      game.startGame();
 
      // Check if the output is as expected
-     std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): What game would you like to load?\nGame: Game Name\nPlayer 1: Rish\nPlayer 2: Justin\nCurrent move belongs to: Rish\n   ==========================================\n 8 | Rb | Nb | Bb | Kb | Qb | Bb | Nb | Rb |\n   ==========================================\n 7 | Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 4 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 2 | Pw | Pw | Pw | Pw | Pw | Pw | Pw | Pw |\n   ==========================================\n 1 | Rw | Nw | Bw | Kw | Qw | Bw | Nw | Rw |\n   ==========================================\n     A    B    C    D    E    F    G    H    \n\nIt is Rish's turn.\nEnter \"quit\" to end the game or \"move\" to proceed.\nEnter position of piece you want to move (ex e5): \nChoose position to move the piece to: \n   ==========================================\n 1 | Rw | Nw | Bw | Qw | Kw | Bw | Nw | Rw |\n   ==========================================\n 2 | Pw | Pw | Pw | Pw | Pw | Pw | Pw | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | Pw |\n   ==========================================\n 4 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 7 | Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb |\n   ==========================================\n 8 | Rb | Nb | Bb | Qb | Kb | Bb | Nb | Rb |\n   ==========================================\n     H    G    F    E    D    C    B    A\n\nIt is Justin's turn.\nEnter \"quit\" to end the game or \"move\" to proceed.\nAre you sure you want to end the game?\nEnter 'Y' to confirm, or 'N' to continue playing: Do you want to save the game before ending? (Y/N): Game ended. Thank you for playing!\n";
+     std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
+     expectedOutput += "What saved game would you like to load?\n";
+     expectedOutput += "\n";
+     expectedOutput += "test\ntwoKings\n"; // list of games in saves
+     expectedOutput += "Game: Game Name\n";
+     expectedOutput += "Player 1: Rish\n";
+     expectedOutput += "Player 2: Justin\n";
+     expectedOutput += "Current move belongs to: Rish\n";
+     expectedOutput += "   ==========================================\n 8 | Rb | Nb | Bb | Kb | Qb | Bb | Nb | Rb |\n   ==========================================\n 7 | Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 4 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 2 | Pw | Pw | Pw | Pw | Pw | Pw | Pw | Pw |\n   ==========================================\n 1 | Rw | Nw | Bw | Kw | Qw | Bw | Nw | Rw |\n   ==========================================\n     A    B    C    D    E    F    G    H    \n";
+     expectedOutput += "\n";
+     expectedOutput += "It is Rish's turn.\n";
+     expectedOutput += "Enter \"quit\" to end the game or \"move\" to proceed.\n";
+     expectedOutput += "Are you sure you want to end the game?\n";
+     expectedOutput += "Enter 'Y' to confirm, or 'N' to continue playing: ";
+     expectedOutput += "Do you want to save the game before ending? (Y/N): ";
+     expectedOutput += "Game ended. Thank you for playing!\n";
 
 
      ASSERT_EQ(output.str(), expectedOutput);
- }
+}
+
+TEST(GameTest, StartGame_ContinueWithInvalidJSON) {
+    // Simulate user input
+     std::istringstream input("continue\ninvalid\ntwoKings\nquit\nY\nN");
+
+     // Simulate output
+     std::ostringstream output;
+
+     // Set input and output streams for the game
+     Game game(input, output);
+
+     // Call the function to be tested
+     game.startGame();
+
+     // Check if the output is as expected
+     std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
+     expectedOutput += "What saved game would you like to load?\n";
+     expectedOutput += "\n";
+     expectedOutput += "test\ntwoKings\n"; // list of games in saves
+     expectedOutput += "Could not find filename. Please try again.\n";
+     expectedOutput += "Game: 1v1\n";
+     expectedOutput += "Player 1: Andrew\n";
+     expectedOutput += "Player 2: Justin\n";
+     expectedOutput += "Current move belongs to: Justin\n";
+     expectedOutput += "   ==========================================\n 1 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 2 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 3 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 4 | -- | -- | -- | Kb | -- | -- | -- | -- |\n   ==========================================\n 5 | -- | -- | -- | -- | Kw | -- | -- | -- |\n   ==========================================\n 6 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 7 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n 8 | -- | -- | -- | -- | -- | -- | -- | -- |\n   ==========================================\n     H    G    F    E    D    C    B    A\n";
+     expectedOutput += "\n";
+     expectedOutput += "It is Justin's turn.\n";
+     expectedOutput += "Enter \"quit\" to end the game or \"move\" to proceed.\n";
+     expectedOutput += "Are you sure you want to end the game?\n";
+     expectedOutput += "Enter 'Y' to confirm, or 'N' to continue playing: ";
+     expectedOutput += "Do you want to save the game before ending? (Y/N): ";
+     expectedOutput += "Game ended. Thank you for playing!\n";
+
+
+     ASSERT_EQ(output.str(), expectedOutput);
+}
+
 
 //Test AskUserForMove() function
 TEST(GameTest, AskUserForMove) {

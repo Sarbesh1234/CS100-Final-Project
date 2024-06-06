@@ -1,0 +1,9 @@
+{
+    "gameName": "1v1",
+    "player1": { "name": "Andrew", "color": "White", "currentPlayer": false },
+    "player2": { "name": "Justin", "color": "Black", "currentPlayer": true },
+    "board": [
+      { "location": [3, 3], "piece": "Kw" },
+      { "location": [4, 4], "piece": "Kb" }
+    ]
+  }
