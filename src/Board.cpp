@@ -130,7 +130,6 @@ bool Board::updateBoard(pair<int, int> startPoint, pair<int, int> endPoint) {
 
 void Board::capturePiece(pair<int, int> point) {
   Piece* capturedPiece = this->getSquare(point.first, point.second)->getPiece();
-  // Piece* capturedPiece = this->board[point.first][point.second]->getPiece();
   if (capturedPiece->getSymbol()[1] == 'w') {
     output << "White ";
   }

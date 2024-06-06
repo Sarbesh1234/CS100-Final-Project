@@ -63,7 +63,6 @@ void Game::playGame() {
     output << boardStr << endl;
 
     if (board.checkMate().first) {
-      //endGame(currentPlayer->getColor() == board.checkMate().second ? &player1 : &player2);
       if(board.checkMate().second == PieceColor::WHITE) {
         currentPlayer = &player1;
         endGame(currentPlayer);
