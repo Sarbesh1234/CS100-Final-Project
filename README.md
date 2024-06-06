@@ -1,4 +1,4 @@
-# R'Chess ![example workflow](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/actions/workflows/main.yml/badge.svg)
+# Papua New Guinea Chess ![example workflow](https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/actions/workflows/main.yml/badge.svg)
  
 Authors: [Andrew Garcia](https://github.com/andytgarcia) [Justin Albert](https://github.com/jnalbert) [Rishabh Pillai](https://github.com/hackinrish) [Sarbesh Sankar](https://github.com/sarbesh1234)
 
