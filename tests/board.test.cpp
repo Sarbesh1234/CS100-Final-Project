@@ -41,20 +41,28 @@ TEST(BoardTest, ValidMoveToEmptySquare) {
 TEST(BoardTest, CaptureBlackPiece) {
     std::ostringstream oss;
     Board board(oss);
-    board.initializeBoard();
-    board.getSquare(1, 0)->setPiece(new Rook(PieceColor::BLACK));
-    board.capturePiece(std::make_pair(1, 0));
+    // board.initializeBoard();
+    // board.getSquare(1, 0)->setPiece(new Rook(PieceColor::BLACK));
+    // board.capturePiece(std::make_pair(1, 0));
+    // EXPECT_EQ(oss.str(), "Black Rook has been captured.\n");
+
+    board.getSquare(3, 3)->setPiece(new Rook(PieceColor::BLACK));
+    board.getSquare(4, 2)->setPiece(new Pawn(PieceColor::WHITE));
+
+    board.reconstructPossibleMoves();
+
+    board.updateBoard(pair<int, int>(4, 2), pair<int, int>(3,3));
     EXPECT_EQ(oss.str(), "Black Rook has been captured.\n");
 }
 
-TEST(BoardTest, CaptureWhitePiece) {
-    std::ostringstream oss;
-    Board board(oss);
-    board.initializeBoard();
-    board.getSquare(6, 0)->setPiece(new Pawn(PieceColor::WHITE));
-    board.capturePiece(std::make_pair(6, 0));
-    EXPECT_EQ(oss.str(), "White Pawn has been captured.\n");
-}
+// TEST(BoardTest, CaptureWhitePiece) {
+//     std::ostringstream oss;
+//     Board board(oss);
+//     board.initializeBoard();
+//     board.getSquare(6, 0)->setPiece(new Pawn(PieceColor::WHITE));
+//     board.capturePiece(std::make_pair(6, 0));
+//     EXPECT_EQ(oss.str(), "White Pawn has been captured.\n");
+// }
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

@@ -56,7 +56,7 @@ void Game::startNewGame() {
 
 void Game::playGame() {
   string gameInput;
-  DisplayBoard displayBoard(board);
+  DisplayBoard displayBoard(&board);
 
   while (true) {
     string boardStr = displayBoard.displayBoard(currentPlayer != nullptr ? player2.getName() == currentPlayer->getName() : false);

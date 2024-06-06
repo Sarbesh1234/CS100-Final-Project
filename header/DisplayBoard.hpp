@@ -8,8 +8,8 @@ using std::string;
 
 class DisplayBoard {
   private:
-    Board board;
+    Board* board;
   public:
-    DisplayBoard(Board& board);
+    DisplayBoard(Board* board);
     string displayBoard(bool flipped);
 };
