@@ -5,9 +5,7 @@
 Square::Square() : piece(nullptr), position(std::make_pair(-1, -1)) {}
 Square::Square(Piece* piece, pair<int, int> position) : piece(piece), position(position) {}
 
-Square::~Square() {
-  delete piece;
-}
+Square::~Square() {}
 
 Piece* Square::getPiece() { return piece; }
 

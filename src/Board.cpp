@@ -18,6 +18,12 @@ Board::Board(ostream& out) : output(out) {
 }
 
 Board::~Board() {
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      delete board[i][j]->getPiece();
+      delete board[i][j];
+    }
+  }
 }
 
 void Board::initializeBoard() {
@@ -123,7 +129,7 @@ bool Board::updateBoard(pair<int, int> startPoint, pair<int, int> endPoint) {
 }
 
 void Board::capturePiece(pair<int, int> point) {
-  Piece* capturedPiece = this->board[point.first][point.second]->getPiece();
+  Piece* capturedPiece = this->getSquare(point.first, point.second)->getPiece();
   if (capturedPiece->getSymbol()[1] == 'w') {
     output << "White ";
   }
@@ -135,6 +141,7 @@ void Board::capturePiece(pair<int, int> point) {
   output << determinePiece(capturedPiece->getSymbol()) << " has been captured." << std::endl;
 
   delete capturedPiece;
+  getSquare(point.first, point.second)->setPiece(nullptr);
 }
 
 
