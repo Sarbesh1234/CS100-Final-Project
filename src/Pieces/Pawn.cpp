@@ -21,8 +21,16 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* board[
     int checkSquareCol;
 
     if(this->color == WHITE) {
-        mutations.push_back(std::make_pair(-1, 0)); // up
+        checkSquareRow = currentPosition.first-1;
+        checkSquareCol = currentPosition.second;
 
+        if (checkSquareRow >= 0 && checkSquareRow < 8 && checkSquareCol >= 0 && checkSquareCol < 8) {
+            checkSquare = this->getNextSquare(checkSquareRow, checkSquareCol, board);
+            if(!checkSquare->hasPiece()) {
+                mutations.push_back(std::make_pair(-1, 0));
+            }
+        }
+        
         //pawn can move diagonal if there is an enemy   
         checkSquareRow = currentPosition.first-1;
         checkSquareCol = currentPosition.second-1;
@@ -44,14 +52,30 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* board[
             }
         }
 
+        hasMoved = !(currentPosition.first == 6);  
+
         if(not hasMoved) {
-            mutations.push_back(std::make_pair(-2, 0)); // up 2
-            hasMoved = true;
-        }   
+            checkSquareRow = currentPosition.first-2;
+            checkSquareCol = currentPosition.second;
+
+            if (checkSquareRow >= 0 && checkSquareRow < 8 && checkSquareCol >= 0 && checkSquareCol < 8) {
+              checkSquare = this->getNextSquare(checkSquareRow, checkSquareCol, board);
+                if(!checkSquare->hasPiece()) {
+                  mutations.push_back(std::make_pair(-2, 0)); //move two squares 
+              }
+          }
+        }
     }else {
         //black pawn
-        
-        mutations.push_back(std::make_pair(1, 0)); // down
+        checkSquareRow = currentPosition.first+1;
+        checkSquareCol = currentPosition.second;
+
+        if (checkSquareRow >= 0 && checkSquareRow < 8 && checkSquareCol >= 0 && checkSquareCol < 8) {
+            checkSquare = this->getNextSquare(checkSquareRow, checkSquareCol, board);
+            if(!checkSquare->hasPiece()) {
+                mutations.push_back(std::make_pair(1, 0)); // down
+            }
+        }
 
         //pawn can move diagonal if there is an enemy   
         checkSquareRow = currentPosition.first+1;
@@ -74,9 +98,18 @@ void Pawn::constructPossibleMoves(pair<int, int> currentPosition, Square* board[
             }
         }
 
+    hasMoved = !(currentPosition.first == 1);  
+
     if (not hasMoved) {
-      mutations.push_back(std::make_pair(2, 0));  // down 2
-      hasMoved = true;
+      checkSquareRow = currentPosition.first+2;
+      checkSquareCol = currentPosition.second;
+
+        if (checkSquareRow >= 0 && checkSquareRow < 8 && checkSquareCol >= 0 && checkSquareCol < 8) {
+          checkSquare = this->getNextSquare(checkSquareRow, checkSquareCol, board);
+            if(!checkSquare->hasPiece()) {
+              mutations.push_back(std::make_pair(2, 0)); //move two squares
+            }
+        }
     }
   }
 
