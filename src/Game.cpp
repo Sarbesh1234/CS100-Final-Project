@@ -114,7 +114,7 @@ void Game::loadSavedGame() {
     }
     closedir(dir);
   }
-  if((dir = opendir("./saves")) == nullptr or files.empty()) {
+  if(files.empty()) {
     output << "No saved games to load." << endl;
     startGame();
     return;
