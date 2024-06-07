@@ -1,0 +1,17 @@
+continue
+test
+move
+E2
+E4
+move
+D7
+D5
+move
+F1
+B5
+move
+E7
+E5
+move
+B5
+E8
