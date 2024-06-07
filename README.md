@@ -59,7 +59,20 @@ The SOLID principle applied in our new UML diagram is the Single Responsibility 
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+<img width="710" alt="Screenshot 2024-06-06 at 8 39 11 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/cc937e79-e127-4615-83e2-1d0f80e6e267">
+<img width="710" alt="Screenshot 2024-06-06 at 8 40 14 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/dce010be-a5de-43b9-9e16-eceb70b2ee5b">
+
+ <img width="710" alt="Screenshot 2024-06-06 at 8 40 31 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/0ffb0f97-cf46-48c4-9100-3ea9ab0f296f">
+
+ <img width="710" alt="Screenshot 2024-06-06 at 8 44 01 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/b5f93080-297f-4814-9b16-abbe5b17f9fa">
+ 
+<img width="710" alt="Screenshot 2024-06-06 at 8 44 17 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/9dff7bca-f1c3-469c-8ce9-148952c46cb5">
+
+<img width="752" alt="Screenshot 2024-06-06 at 8 47 00 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/590f1404-720a-478f-ac48-20b22bd10a9f">
+
+<img width="753" alt="Screenshot 2024-06-06 at 8 47 43 PM" src="https://github.com/cs100/final-project-agarc938-jalbe020-rpill005-ssank019/assets/65417105/7f9bb3dc-8713-4f8f-b0ec-e2f89720c879">
+
+
  ## Installation/Usage
 
  To run our project, first you must clone the repository recursively, using
