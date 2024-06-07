@@ -84,4 +84,8 @@ The SOLID principle applied in our new UML diagram is the Single Responsibility 
  
  ## Testing
  Our project was tested using the [GoogleTest](https://github.com/google/googletest) framework. It was validated using GitHub Actions Continuous Integration.
+ You can run these tests by running the above cmake commands and then running
  
+ ```
+ ./bin/runAllTests
+ ```
