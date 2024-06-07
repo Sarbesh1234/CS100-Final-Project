@@ -101,7 +101,26 @@ TEST(GameTest, StartGame_InvalidInput) {
      std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
      expectedOutput += "What saved game would you like to load?\n";
      expectedOutput += "\n";
-     expectedOutput += "test\ntwoKings\n"; // list of games in saves
+
+     DIR* dir;
+     struct dirent* ent;
+     if((dir = opendir("./saves")) != nullptr) {
+        while((ent = readdir(dir)) != nullptr) {
+            string fullName = ent->d_name;
+            if(fullName == "." or fullName == "..") continue;
+            size_t pos = fullName.find(".json");
+            string name = fullName.substr(0, pos);
+            expectedOutput += name;
+            expectedOutput += "\n";
+        }
+        closedir(dir);
+     }
+     else {
+        expectedOutput += "No saved games to load.";
+        expectedOutput += "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
+     }
+
+
      expectedOutput += "Game: Game Name\n";
      expectedOutput += "Player 1: Rish\n";
      expectedOutput += "Player 2: Justin\n";
@@ -136,7 +155,25 @@ TEST(GameTest, StartGame_ContinueWithInvalidJSON) {
      std::string expectedOutput = "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
      expectedOutput += "What saved game would you like to load?\n";
      expectedOutput += "\n";
-     expectedOutput += "test\ntwoKings\n"; // list of games in saves
+
+     DIR* dir;
+     struct dirent* ent;
+     if((dir = opendir("./saves")) != nullptr) {
+        while((ent = readdir(dir)) != nullptr) {
+            string fullName = ent->d_name;
+            if(fullName == "." or fullName == "..") continue;
+            size_t pos = fullName.find(".json");
+            string name = fullName.substr(0, pos);
+            expectedOutput += name;
+            expectedOutput += "\n";
+        }
+        closedir(dir);
+     }
+     else {
+        expectedOutput += "No saved games to load.";
+        expectedOutput += "Do you want to start a game (enter \"start\") or continue a previous one? (enter \"continue\"): ";
+     }
+
      expectedOutput += "Could not find filename. Please try again.\n";
      expectedOutput += "Game: 1v1\n";
      expectedOutput += "Player 1: Andrew\n";
